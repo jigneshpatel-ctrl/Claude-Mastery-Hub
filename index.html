@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -81,11 +80,29 @@ a{color:var(--ac);}a:hover{text-decoration:underline;}
 .th-lbl{display:inline;}
 
 /* LAYOUT */
-.app{display:flex;max-width:1300px;margin:0 auto;}
-.layout{display:flex;max-width:1300px;margin:0 auto;}/* legacy alias */
+.app{
+  display:flex;
+  width:100%;
+  max-width:1300px;
+  margin:0 auto;
+  align-items:stretch;   /* both sidebar and main stretch to same height */
+  min-height:calc(100vh - 52px);
+}
+
 /* SIDEBAR — desktop only */
-.sidebar{width:215px;flex-shrink:0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;
-  padding:16px 10px;border-right:1px solid var(--bo);scrollbar-width:thin;}
+.sidebar{
+  width:220px;
+  flex-shrink:0;
+  position:sticky;
+  top:52px;
+  height:calc(100vh - 52px);   /* sticky viewport height */
+  overflow-y:auto;
+  padding:16px 10px;
+  border-right:1px solid var(--bo);
+  scrollbar-width:thin;
+  background:var(--bg);
+  align-self:flex-start;       /* don't stretch — stay sticky */
+}
 .sbs{margin-bottom:18px;}.sbl{font-size:10px;text-transform:uppercase;letter-spacing:.07em;
   color:var(--t3);padding:0 7px;margin-bottom:4px;font-weight:600;}
 .sbk{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:var(--r);
@@ -99,7 +116,12 @@ a{color:var(--ac);}a:hover{text-decoration:underline;}
 .sb-model-v{font-size:12px;color:var(--t2);line-height:1.75;}
 
 /* MAIN */
-.main{flex:1;min-width:0;padding:26px 36px;}
+.main{
+  flex:1 1 0;              /* grow to fill, basis 0 so sidebar width is respected */
+  min-width:0;
+  padding:26px 36px;
+  overflow-x:hidden;       /* prevent horizontal scroll from wide content */
+}
 
 /* MOBILE DRAWER */
 .dov{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.4);backdrop-filter:blur(3px);}
@@ -359,13 +381,13 @@ code{background:var(--bg3);border:1px solid var(--bo);border-radius:4px;padding:
 
 /* ============ FULL RESPONSIVE ============ */
 
-/* Tablet */
+/* Tablet: 769px–1060px — sidebar narrows, padding tightens */
 @media(max-width:1060px){
-  .main{padding:22px 22px;}
-  .sidebar{width:190px;}
+  .main{padding:22px 20px;}
+  .sidebar{width:185px;}
 }
 
-/* Mobile */
+/* Mobile: ≤768px — sidebar hidden, hamburger shown, single col */
 @media(max-width:768px){
   /* Show hamburger, hide sidebar */
   .sidebar{display:none;}
@@ -479,7 +501,6 @@ code{background:var(--bg3);border:1px solid var(--bo);border-radius:4px;padding:
         <span style="color:var(--teal);font-size:11px;">● Live Apr 2026</span>
       </div>
     </div>
-  </div>
   </div>
 </aside>
 
