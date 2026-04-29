@@ -1,1799 +1,1147 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///Users/jigneshpatel/Downloads/claude-mastery-hub.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Mastery Hub — Beginner to Expert</title>
-<link href="./Claude Mastery Hub — Beginner to Expert_files/css2" rel="stylesheet">
+<title>Claude Mastery Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --bg2: #111118;
-    --bg3: #16161f;
-    --surface: #1c1c28;
-    --surface2: #22222f;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.12);
-    --text: #e8e8f0;
-    --text2: #9898b0;
-    --text3: #5a5a70;
-    --accent: #7c6ef5;
-    --accent2: #5a4de0;
-    --accent-glow: rgba(124,110,245,0.15);
-    --gold: #e8b84b;
-    --gold2: rgba(232,184,75,0.12);
-    --teal: #3ecfa0;
-    --teal2: rgba(62,207,160,0.1);
-    --coral: #ff6b6b;
-    --coral2: rgba(255,107,107,0.1);
-    --blue: #5ba4f5;
-    --blue2: rgba(91,164,245,0.1);
-    --font-head: 'Syne', sans-serif;
-    --font-body: 'DM Mono', monospace;
-    --font-serif: 'Lora', serif;
-    --r: 12px;
-    --r2: 8px;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-
-  /* ── GRAIN OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    padding: 80px 40px 60px;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
-    background: radial-gradient(ellipse at center, rgba(124,110,245,0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent-glow);
-    border: 1px solid rgba(124,110,245,0.3);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 12px;
-    color: #a89df7;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .hero-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 8px var(--accent);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  .hero h1 {
-    font-family: var(--font-head);
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #ffffff 0%, #a89df7 50%, #7c6ef5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero p {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 17px;
-    color: var(--text2);
-    max-width: 560px;
-    margin: 0 auto 36px;
-    line-height: 1.6;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-num {
-    font-family: var(--font-head);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  /* ── NAV ── */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10,10,15,0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
-    display: flex;
-    gap: 2px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .nav::-webkit-scrollbar { display: none; }
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 18px;
-    font-size: 13px;
-    color: var(--text3);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-
-  .nav-item:hover { color: var(--text); border-bottom-color: var(--border2); }
-  .nav-item.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-  .nav-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-    opacity: 0.6;
-  }
-
-  /* ── LAYOUT ── */
-  .layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 0;
-    position: relative;
-  }
-
-  .sidebar {
-    position: sticky;
-    top: 49px;
-    height: calc(100vh - 49px);
-    overflow-y: auto;
-    padding: 32px 24px;
-    border-right: 1px solid var(--border);
-    scrollbar-width: thin;
-    scrollbar-color: var(--border2) transparent;
-  }
-
-  .sidebar-section {
-    margin-bottom: 28px;
-  }
-
-  .sidebar-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text3);
-    margin-bottom: 8px;
-    padding-left: 12px;
-  }
-
-  .sidebar-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: var(--r2);
-    font-size: 13px;
-    color: var(--text2);
-    cursor: pointer;
-    transition: all 0.15s;
-    text-decoration: none;
-    border: 1px solid transparent;
-  }
-
-  .sidebar-link:hover {
-    color: var(--text);
-    background: var(--surface);
-    border-color: var(--border);
-  }
-
-  .sidebar-link.active {
-    color: var(--accent);
-    background: var(--accent-glow);
-    border-color: rgba(124,110,245,0.2);
-  }
-
-  .sidebar-icon {
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    flex-shrink: 0;
-  }
-
-  /* ── MAIN CONTENT ── */
-  .main {
-    padding: 40px 48px;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  /* ── SECTIONS ── */
-  .section {
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
-
-  .section.active { display: block; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .section-header {
-    margin-bottom: 32px;
-  }
-
-  .section-tag {
-    display: inline-block;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-
-  .section-title {
-    font-family: var(--font-head);
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-
-  .section-desc {
-    font-family: var(--font-serif);
-    font-style: italic;
-    color: var(--text2);
-    font-size: 15px;
-  }
-
-  /* ── CARDS ── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    padding: 20px;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--card-accent, var(--accent));
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .card:hover {
-    border-color: var(--border2);
-    background: var(--surface2);
-    transform: translateY(-2px);
-  }
-
-  .card:hover::before { opacity: 1; }
-
-  .card-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    margin-bottom: 14px;
-    background: var(--icon-bg, var(--accent-glow));
-  }
-
-  .card h3 {
-    font-family: var(--font-head);
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text);
-  }
-
-  .card p {
-    font-size: 13px;
-    color: var(--text2);
-    line-height: 1.6;
-  }
-
-  .card-tag {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 100px;
-    border: 1px solid var(--border2);
-    color: var(--text3);
-  }
-
-  /* ── TIPS LIST ── */
-  .tips-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-
-  .tip {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    padding: 18px 20px;
-    display: grid;
-    grid-template-columns: 36px 1fr;
-    gap: 16px;
-    align-items: start;
-    transition: all 0.15s;
-    cursor: pointer;
-  }
-
-  .tip:hover {
-    border-color: var(--border2);
-    background: var(--surface2);
-  }
-
-  .tip-num {
-    font-family: var(--font-head);
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--text3);
-    line-height: 1;
-    padding-top: 2px;
-  }
-
-  .tip-content h4 {
-    font-family: var(--font-head);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-
-  .tip-content p {
-    font-size: 13px;
-    color: var(--text2);
-    line-height: 1.6;
-  }
-
-  .tip-content code {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 7px;
-    font-size: 12px;
-    color: var(--teal);
-    font-family: var(--font-body);
-  }
-
-  /* ── PROMPT TEMPLATES ── */
-  .template-card {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    margin-bottom: 16px;
-    overflow: hidden;
-  }
-
-  .template-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    cursor: pointer;
-  }
-
-  .template-title {
-    font-family: var(--font-head);
-    font-size: 14px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .template-badge {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 100px;
-    background: var(--accent-glow);
-    color: var(--accent);
-    border: 1px solid rgba(124,110,245,0.2);
-  }
-
-  .template-body {
-    padding: 16px 20px;
-    display: none;
-  }
-
-  .template-body.open { display: block; }
-
-  .template-chevron {
-    color: var(--text3);
-    transition: transform 0.2s;
-    font-size: 12px;
-  }
-
-  .template-chevron.open { transform: rotate(180deg); }
-
-  .prompt-box {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--r2);
-    padding: 16px;
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--text2);
-    font-family: var(--font-body);
-    position: relative;
-  }
-
-  .prompt-box .placeholder {
-    color: var(--accent);
-    font-style: italic;
-  }
-
-  .copy-btn {
-    position: absolute;
-    top: 10px; right: 10px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 5px 12px;
-    font-size: 11px;
-    color: var(--text3);
-    cursor: pointer;
-    font-family: var(--font-body);
-    transition: all 0.15s;
-  }
-
-  .copy-btn:hover {
-    color: var(--text);
-    border-color: var(--border2);
-  }
-
-  /* ── LEVELS ── */
-  .level-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  .level-card {
-    border-radius: var(--r);
-    padding: 24px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-
-  .level-card.beginner { background: linear-gradient(135deg, #0f1f1a 0%, #0d1a14 100%); --lc: var(--teal); }
-  .level-card.intermediate { background: linear-gradient(135deg, #1a1520 0%, #140f1c 100%); --lc: var(--accent); }
-  .level-card.advanced { background: linear-gradient(135deg, #1f1500 0%, #1a1005 100%); --lc: var(--gold); }
-
-  .level-card::before {
-    content: '';
-    position: absolute;
-    bottom: -20px; right: -20px;
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    background: var(--lc);
-    opacity: 0.05;
-  }
-
-  .level-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--lc);
-    margin-bottom: 10px;
-  }
-
-  .level-card h3 {
-    font-family: var(--font-head);
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 14px;
-  }
-
-  .level-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .level-list li {
-    font-size: 13px;
-    color: var(--text2);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.5;
-  }
-
-  .level-list li::before {
-    content: '→';
-    color: var(--lc);
-    flex-shrink: 0;
-    opacity: 0.7;
-    font-size: 12px;
-    margin-top: 2px;
-  }
-
-  /* ── UPDATES ── */
-  .update-timeline {
-    position: relative;
-    padding-left: 24px;
-  }
-
-  .update-timeline::before {
-    content: '';
-    position: absolute;
-    left: 7px; top: 8px; bottom: 0;
-    width: 1px;
-    background: var(--border);
-  }
-
-  .update-item {
-    position: relative;
-    margin-bottom: 28px;
-  }
-
-  .update-item::before {
-    content: '';
-    position: absolute;
-    left: -20px; top: 6px;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(124,110,245,0.3);
-  }
-
-  .update-item.new::before {
-    background: var(--teal);
-    box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(62,207,160,0.3);
-  }
-
-  .update-date {
-    font-size: 11px;
-    color: var(--text3);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .update-title {
-    font-family: var(--font-head);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .new-badge {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 100px;
-    background: rgba(62,207,160,0.12);
-    color: var(--teal);
-    border: 1px solid rgba(62,207,160,0.25);
-    font-family: var(--font-body);
-    font-weight: 400;
-  }
-
-  .update-desc {
-    font-size: 13px;
-    color: var(--text2);
-    line-height: 1.65;
-  }
-
-  /* ── LINKS / RESOURCES ── */
-  .resource-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
-  }
-
-  .resource-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    text-decoration: none;
-    color: var(--text2);
-    font-size: 13px;
-    transition: all 0.15s;
-  }
-
-  .resource-link:hover {
-    color: var(--text);
-    background: var(--surface2);
-    border-color: var(--border2);
-    transform: translateX(2px);
-  }
-
-  .resource-link-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .resource-link-content h4 {
-    font-family: var(--font-head);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-
-  .resource-link-content p {
-    font-size: 12px;
-    color: var(--text3);
-  }
-
-  .resource-arrow {
-    margin-left: auto;
-    color: var(--text3);
-    font-size: 12px;
-    flex-shrink: 0;
-    transition: transform 0.15s;
-  }
-
-  .resource-link:hover .resource-arrow { transform: translateX(2px); }
-
-  /* ── HIGHLIGHT BOX ── */
-  .highlight {
-    background: var(--accent-glow);
-    border: 1px solid rgba(124,110,245,0.2);
-    border-radius: var(--r);
-    padding: 18px 20px;
-    margin-bottom: 24px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
-
-  .highlight-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
-
-  .highlight-text h4 {
-    font-family: var(--font-head);
-    font-size: 14px;
-    font-weight: 600;
-    color: #c4bbff;
-    margin-bottom: 6px;
-  }
-
-  .highlight-text p {
-    font-size: 13px;
-    color: #9890d0;
-    line-height: 1.6;
-  }
-
-  .warn {
-    background: rgba(232,184,75,0.08);
-    border: 1px solid rgba(232,184,75,0.2);
-  }
-
-  .warn .highlight-text h4 { color: var(--gold); }
-  .warn .highlight-text p { color: #a89060; }
-
-  /* ── TABLE ── */
-  .comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 28px;
-    font-size: 13px;
-  }
-
-  .comparison-table th {
-    text-align: left;
-    padding: 10px 14px;
-    background: var(--surface);
-    color: var(--text3);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid var(--border);
-    font-weight: 400;
-  }
-
-  .comparison-table td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text2);
-    vertical-align: top;
-    line-height: 1.5;
-  }
-
-  .comparison-table tr:hover td {
-    background: var(--surface);
-    color: var(--text);
-  }
-
-  .comparison-table td:first-child {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .badge-good {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    background: rgba(62,207,160,0.1);
-    color: var(--teal);
-    border: 1px solid rgba(62,207,160,0.2);
-  }
-
-  .badge-warn {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    background: rgba(232,184,75,0.1);
-    color: var(--gold);
-    border: 1px solid rgba(232,184,75,0.2);
-  }
-
-  /* ── PROGRESS TRACK ── */
-  .progress-track {
-    display: flex;
-    gap: 0;
-    margin-bottom: 32px;
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    overflow: hidden;
-  }
-
-  .progress-step {
-    flex: 1;
-    padding: 16px;
-    border-right: 1px solid var(--border);
-    text-align: center;
-    background: var(--surface);
-    transition: background 0.15s;
-    cursor: pointer;
-  }
-
-  .progress-step:last-child { border-right: none; }
-  .progress-step:hover { background: var(--surface2); }
-  .progress-step.done { background: rgba(62,207,160,0.05); }
-  .progress-step.active-step { background: var(--accent-glow); }
-
-  .progress-step-num {
-    font-family: var(--font-head);
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--text3);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .progress-step.done .progress-step-num { color: var(--teal); }
-  .progress-step.active-step .progress-step-num { color: var(--accent); }
-
-  .progress-step-label {
-    font-size: 12px;
-    color: var(--text3);
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 28px 0;
-  }
-
-  h2.sub {
-    font-family: var(--font-head);
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 18px;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  h2.sub::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 5px; height: 5px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-
-  @media (max-width: 768px) {
-    .layout { grid-template-columns: 1fr; }
-    .sidebar { display: none; }
-    .main { padding: 24px 20px; }
-    .level-grid { grid-template-columns: 1fr; }
-    .hero { padding: 48px 20px 36px; }
-    .hero-stats { gap: 24px; }
-  }
+:root{
+  --r:8px;--r2:6px;--r3:12px;
+  --fb:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'SF Mono','Fira Code','Fira Mono',monospace;
+  --teal:#009473;  --tl2:rgba(0,148,115,.09);  --tlb:rgba(0,148,115,.2);
+  --coral:#d95f43; --cl2:rgba(217,95,67,.09);  --clb:rgba(217,95,67,.2);
+  --gold:#b45309;  --gl2:rgba(180,83,9,.09);   --glb:rgba(180,83,9,.2);
+  --blue:#1d4ed8;  --bl2:rgba(29,78,216,.09);  --blb:rgba(29,78,216,.2);
+}
+
+/* LIGHT — exact claude.ai values */
+[data-theme="light"]{
+  --bg:#ffffff;   --bg2:#f9f9f8;  --bg3:#f4f4f2;
+  --sur:#ffffff;  --su2:#f9f9f8;
+  --bo:rgba(0,0,0,.07);  --b2:rgba(0,0,0,.13);  --b3:rgba(0,0,0,.22);
+  --tx:#1a1915;   --t2:#5c5b56;  --t3:#9c9b96;
+  --ac:#b45309;   --ac2:#92400e;
+  --ag:rgba(180,83,9,.08);  --ab:rgba(180,83,9,.18);
+  --sh:0 1px 2px rgba(0,0,0,.05),0 1px 3px rgba(0,0,0,.04);
+  --sh2:0 2px 8px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.04);
+  --tg:#f4f4f2;  --ib:#ffffff;  --cb:#ffffff;
+  --fh:'Georgia','Times New Roman',serif;
+}
+
+/* DARK — exact claude.ai dark mode */
+[data-theme="dark"]{
+  --bg:#1c1917;   --bg2:#171614;  --bg3:#242220;
+  --sur:#242220;  --su2:#2d2b28;
+  --bo:rgba(255,255,255,.07);  --b2:rgba(255,255,255,.12);  --b3:rgba(255,255,255,.2);
+  --tx:#e8e6e1;   --t2:#a09e98;  --t3:#6b6963;
+  --ac:#d97706;   --ac2:#f59e0b;
+  --ag:rgba(217,119,6,.11);  --ab:rgba(217,119,6,.24);
+  --sh:0 1px 2px rgba(0,0,0,.3);
+  --sh2:0 2px 8px rgba(0,0,0,.45);
+  --tg:#2d2b28;  --ib:#242220;  --cb:#242220;
+  --fh:'Georgia','Times New Roman',serif;
+  --teal:#00c48a;  --tl2:rgba(0,196,138,.1);  --tlb:rgba(0,196,138,.22);
+  --coral:#f07060; --cl2:rgba(240,112,96,.1);  --clb:rgba(240,112,96,.22);
+  --gold:#f59e0b;  --gl2:rgba(245,158,11,.1);  --glb:rgba(245,158,11,.22);
+  --blue:#60a5fa;  --bl2:rgba(96,165,250,.1);  --blb:rgba(96,165,250,.22);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-tap-highlight-color:transparent;}
+body{background:var(--bg);color:var(--tx);font-family:var(--fb);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s;}
+a{color:var(--ac);}a:hover{text-decoration:underline;}
+::-webkit-scrollbar{width:5px;height:5px;}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:3px;}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:300;height:52px;
+  background:rgba(255,255,255,.92);border-bottom:1px solid var(--bo);
+  padding:0 14px;display:flex;align-items:center;gap:0;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:background .25s;}
+[data-theme="dark"] .topbar{background:rgba(28,25,23,.92);}
+.brand{font-size:15px;font-weight:600;color:var(--tx);margin-right:8px;flex-shrink:0;letter-spacing:-.015em;}
+.brand span{color:var(--ac);}
+/* HAMBURGER — hidden on desktop, shown on mobile */
+.ham{display:none;background:none;border:none;cursor:pointer;padding:8px 6px;color:var(--t2);flex-shrink:0;border-radius:var(--r2);}
+.ham:hover{background:var(--bg3);}
+.navscroll{display:flex;overflow-x:auto;flex:1;scrollbar-width:none;}
+.navscroll::-webkit-scrollbar{display:none;}
+.nv{display:flex;align-items:center;gap:4px;padding:0 11px;height:52px;font-size:13px;
+  color:var(--t3);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;
+  transition:all .12s;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--fb);font-weight:400;}
+.nv:hover{color:var(--t2);}.nv.active{color:var(--ac);border-bottom-color:var(--ac);font-weight:500;}
+.nd{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.4;}
+.thr{display:flex;align-items:center;gap:7px;margin-left:8px;flex-shrink:0;}
+.thbtn{display:flex;align-items:center;gap:6px;background:var(--tg);border:1px solid var(--bo);
+  border-radius:100px;padding:5px 11px;cursor:pointer;font-size:12px;color:var(--t2);
+  font-family:var(--fb);transition:all .15s;white-space:nowrap;}
+.thbtn:hover{border-color:var(--b2);color:var(--tx);}
+.th-lbl{display:inline;}
+
+/* LAYOUT */
+.app{display:flex;max-width:1300px;margin:0 auto;}
+.layout{display:flex;max-width:1300px;margin:0 auto;}/* legacy alias */
+/* SIDEBAR — desktop only */
+.sidebar{width:215px;flex-shrink:0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;
+  padding:16px 10px;border-right:1px solid var(--bo);scrollbar-width:thin;}
+.sbs{margin-bottom:18px;}.sbl{font-size:10px;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--t3);padding:0 7px;margin-bottom:4px;font-weight:600;}
+.sbk{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:var(--r);
+  font-size:13px;color:var(--t2);cursor:pointer;transition:all .1s;border:1px solid transparent;
+  background:none;width:100%;text-align:left;font-family:var(--fb);font-weight:400;}
+.sbk:hover{color:var(--tx);background:var(--bg3);}
+.sbk.active{color:var(--ac);background:var(--ag);border-color:var(--ab);font-weight:500;}
+.sbi{font-size:14px;flex-shrink:0;}
+.sb-model{background:var(--bg3);border:1px solid var(--bo);border-radius:var(--r3);padding:11px;margin-top:8px;}
+.sb-model-t{font-size:10px;font-weight:600;color:var(--ac);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;}
+.sb-model-v{font-size:12px;color:var(--t2);line-height:1.75;}
+
+/* MAIN */
+.main{flex:1;min-width:0;padding:26px 36px;}
+
+/* MOBILE DRAWER */
+.dov{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.4);backdrop-filter:blur(3px);}
+.dov.open{display:block;}
+.dwr{position:fixed;top:0;left:0;bottom:0;z-index:500;width:260px;background:var(--bg);
+  border-right:1px solid var(--bo);padding:54px 10px 20px;transform:translateX(-100%);
+  transition:transform .22s ease;overflow-y:auto;}
+.dwr.open{transform:translateX(0);}
+.dwr-close{position:absolute;top:13px;right:12px;background:none;border:none;cursor:pointer;
+  color:var(--t2);font-size:18px;padding:5px;border-radius:var(--r2);}
+.dwr-close:hover{background:var(--bg3);}
+
+/* SECTIONS */
+.section{display:none;animation:fu .2s ease;}.section.active{display:block;}
+@keyframes fu{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.stag{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--ac);margin-bottom:5px;display:block;font-weight:600;}
+.stitle{font-family:var(--fh);font-size:22px;font-weight:700;letter-spacing:-.01em;margin-bottom:5px;color:var(--tx);}
+.sdesc{color:var(--t2);font-size:14px;margin-bottom:20px;line-height:1.65;}
+h2.sub{font-size:11px;font-weight:600;color:var(--t3);margin:22px 0 11px;display:flex;align-items:center;gap:7px;text-transform:uppercase;letter-spacing:.06em;}
+h2.sub::after{content:'';flex:1;height:1px;background:var(--bo);}
+hr.dv{border:none;border-top:1px solid var(--bo);margin:18px 0;}
+code{background:var(--bg3);border:1px solid var(--bo);border-radius:4px;padding:1px 5px;font-size:12px;color:var(--teal);font-family:var(--mono);}
+
+/* BADGES */
+.bdg{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:500;white-space:nowrap;}
+.bdg-teal{background:var(--tl2);color:var(--teal);border:1px solid var(--tlb);}
+.bdg-amber{background:var(--gl2);color:var(--gold);border:1px solid var(--glb);}
+.bdg-red{background:var(--cl2);color:var(--coral);border:1px solid var(--clb);}
+.bdg-blue{background:var(--bl2);color:var(--blue);border:1px solid var(--blb);}
+.bdg-neu{background:var(--bg3);color:var(--t3);border:1px solid var(--bo);}
+
+/* HIGHLIGHT BOXES */
+.hl{background:var(--ag);border:1px solid var(--ab);border-radius:var(--r3);padding:13px 15px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start;}
+.hl-teal{background:var(--tl2);border-color:var(--tlb);}
+.hl-amber{background:var(--gl2);border-color:var(--glb);}
+.hl-red{background:var(--cl2);border-color:var(--clb);}
+.hl-blue{background:var(--bl2);border-color:var(--blb);}
+.hli{font-size:15px;flex-shrink:0;margin-top:1px;}
+.hlb h4{font-size:13px;font-weight:600;margin-bottom:3px;color:var(--tx);}
+.hlb p{font-size:13px;color:var(--t2);line-height:1.6;}
+.hl-teal .hlb h4{color:var(--teal);}
+.hl-amber .hlb h4{color:var(--gold);}
+.hl-red .hlb h4{color:var(--coral);}
+
+/* DASHBOARD STATS */
+.dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.dcard{background:var(--sur);border:1px solid var(--bo);border-radius:var(--r3);padding:14px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.dnum{font-size:26px;font-weight:600;color:var(--ac);display:block;letter-spacing:-.02em;}
+.dlbl{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);margin-top:2px;}
+
+/* MUST TRY */
+.mtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:20px;}
+.mtcard{background:var(--sur);border:1px solid var(--bo);border-radius:var(--r);padding:15px;
+  border-left:3px solid var(--ac);transition:all .15s;}
+.mtcard:hover{background:var(--su2);border-color:var(--b2);}
+.mth{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.mtt{font-family:var(--fh);font-size:13px;font-weight:700;}
+.mtb{font-size:10px;padding:2px 7px;border-radius:100px;background:var(--ag);
+  color:var(--ac);border:1px solid rgba(124,110,245,.2);}
+.mtp{background:var(--bg3);border:1px solid var(--bo);border-radius:var(--r2);
+  padding:9px 11px;font-size:11px;color:var(--t2);line-height:1.65;font-family:var(--fb);
+  margin-bottom:8px;max-height:82px;overflow:hidden;}
+.mtw{font-size:11px;color:var(--t3);line-height:1.5;}
+.mtbtn{display:flex;gap:7px;margin-top:9px;}
+
+/* UPDATE ALERTS (dashboard) */
+.uab{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.ual{background:var(--sur);border:1px solid var(--bo);border-radius:var(--r);
+  padding:12px 15px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:all .15s;}
+.ual:hover{background:var(--su2);border-color:var(--b2);}
+.ual.uhot{border-color:rgba(255,107,107,.3);background:var(--cl2);}
+.ual.unew{border-color:rgba(62,207,160,.3);background:var(--tl2);}
+.ual.ufeat{border-color:rgba(124,110,245,.3);background:var(--ag);}
+.ubg{font-size:10px;padding:3px 8px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+.bhot{background:var(--cl2);color:var(--coral);border:1px solid rgba(255,107,107,.3);}
+.bnew{background:var(--tl2);color:var(--teal);border:1px solid rgba(62,207,160,.3);}
+.bfeat{background:var(--ag);color:var(--ac);border:1px solid rgba(124,110,245,.3);}
+.btip{background:var(--gl2);color:var(--gold);border:1px solid rgba(232,184,75,.3);}
+.bg2{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;
+  background:var(--tl2);color:var(--teal);border:1px solid rgba(62,207,160,.2);}
+.bw2{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;
+  background:var(--gl2);color:var(--gold);border:1px solid rgba(232,184,75,.2);}
+.uac{flex:1;}.uat{font-family:var(--fh);font-size:13px;font-weight:600;margin-bottom:2px;}
+.uad{font-size:12px;color:var(--t2);}
+.uar{color:var(--t3);font-size:11px;transition:transform .15s;}.ual:hover .uar{transform:translateX(3px);}
+
+/* PROGRESS */
+.rmsum{background:var(--sur);border:1px solid var(--bo);border-radius:var(--r);
+  padding:16px 20px;margin-bottom:20px;}
+.rst{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px;}
+.rsn{font-family:var(--fh);font-size:13px;font-weight:700;}
+.rsc{display:flex;gap:13px;font-size:12px;}
+.rsci{display:flex;align-items:center;gap:4px;}
+.rsd{width:6px;height:6px;border-radius:50%;}
+.ptrack{background:var(--bg3);border-radius:100px;height:6px;overflow:hidden;margin-bottom:5px;}
+.pfill{height:100%;background:linear-gradient(90deg,var(--ac),var(--teal));
+  border-radius:100px;width:0%;transition:width .4s ease;}
+.plbl{font-size:11px;color:var(--t3);}
+
+/* HIGHLIGHT BOXES */
+.hl{background:var(--ag);border:1px solid rgba(124,110,245,.2);border-radius:var(--r);
+  padding:13px 15px;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;}
+.hlw{background:var(--gl2);border-color:rgba(232,184,75,.25);}
+.hls{background:var(--tl2);border-color:rgba(62,207,160,.25);}
+.hlf{background:var(--cl2);border-color:rgba(255,107,107,.25);}
+.hli{font-size:15px;flex-shrink:0;margin-top:1px;}
+.hlb h4{font-family:var(--fh);font-size:13px;font-weight:600;margin-bottom:3px;}
+.hlb p{font-size:12px;color:var(--t2);line-height:1.6;}
+.hlw .hlb h4{color:var(--gold);}
+.hls .hlb h4{color:var(--teal);}
+.hlf .hlb h4{color:var(--coral);}
+
+/* PROMPT LIBRARY */
+.psrch{width:100%;padding:9px 13px;background:var(--ib);border:1px solid var(--bo);
+  border-radius:var(--r2);color:var(--tx);font-size:13px;font-family:var(--fb);
+  margin-bottom:13px;outline:none;transition:border-color .15s;}
+.psrch:focus{border-color:var(--b2);}
+.psrch::placeholder{color:var(--t3);}
+.pfilts{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.pfb{padding:5px 12px;border-radius:100px;font-size:12px;border:1px solid var(--bo);
+  color:var(--t2);background:var(--sur);cursor:pointer;font-family:var(--fb);transition:all .15s;}
+.pfb:hover{border-color:var(--b2);color:var(--tx);}
+.pfb.on{background:var(--ag);border-color:rgba(124,110,245,.3);color:var(--ac);}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.pc{background:var(--cb);border:1px solid var(--bo);border-radius:var(--r);overflow:hidden;transition:border-color .15s;}
+.pc:hover{border-color:var(--b2);}
+.pch{padding:10px 14px;border-bottom:1px solid var(--bo);background:var(--sur);
+  display:flex;justify-content:space-between;align-items:center;}
+.pct{font-family:var(--fh);font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;}
+.pcc{font-size:10px;padding:2px 7px;border-radius:100px;border:1px solid var(--bo);color:var(--t3);}
+.pcb{padding:12px 14px;}
+.pcp{background:var(--bg3);border:1px solid var(--bo);border-radius:var(--r2);
+  padding:9px 11px;font-size:11px;color:var(--t2);line-height:1.7;font-family:var(--fb);
+  max-height:130px;overflow:hidden;position:relative;}
+.pcp.xp{max-height:none;}
+.pph{color:var(--ac);font-style:italic;}
+.pca{display:flex;gap:6px;margin-top:8px;justify-content:flex-end;}
+.pcbtn{padding:4px 10px;border-radius:5px;font-size:11px;border:1px solid var(--bo);
+  color:var(--t3);background:transparent;cursor:pointer;font-family:var(--fb);transition:all .15s;}
+.pcbtn:hover{color:var(--tx);border-color:var(--b2);}
+.pcbtn.ok{color:var(--teal);border-color:rgba(62,207,160,.3);}
+.ntag{font-size:10px;padding:1px 5px;border-radius:3px;background:var(--tl2);
+  color:var(--teal);border:1px solid rgba(62,207,160,.3);margin-left:3px;}
+
+/* UPDATES FULL */
+.ucard{background:var(--cb);border:1px solid var(--bo);border-radius:var(--r);overflow:hidden;margin-bottom:12px;}
+.uch{padding:14px 17px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:background .15s;}
+.uch:hover{background:var(--sur);}
+.ucdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.ucm{flex:1;}.ucd{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;}
+.uct{font-family:var(--fh);font-size:14px;font-weight:700;margin-bottom:3px;
+  display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.ucs{font-size:12px;color:var(--t2);}
+.ucch{color:var(--t3);font-size:10px;flex-shrink:0;transition:transform .2s;margin-top:3px;}
+.ucch.op{transform:rotate(180deg);}
+.ucbody{display:none;padding:16px;border-top:1px solid var(--bo);}
+.ucbody.op{display:block;}
+.dbox{background:var(--bg3);border:1px solid var(--bo);border-radius:var(--r2);padding:12px;margin:10px 0;}
+.dlbl{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--t3);margin-bottom:6px;}
+.dprompt{font-size:12px;color:var(--tx);line-height:1.7;font-family:var(--fb);}
+.dph{background:var(--ag);color:var(--ac);padding:1px 4px;border-radius:3px;font-style:italic;}
+.lrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px;}
+.elink{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:var(--r2);
+  font-size:12px;border:1px solid var(--bo);color:var(--t2);background:var(--sur);
+  transition:all .15s;text-decoration:none;}
+.elink:hover{color:var(--ac);border-color:rgba(124,110,245,.3);background:var(--ag);text-decoration:none;}
+.wbox{background:var(--ag);border:1px solid rgba(124,110,245,.15);border-radius:var(--r2);padding:10px 12px;margin:10px 0;}
+.wlbl{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--ac);margin-bottom:4px;}
+.wtxt{font-size:13px;color:var(--t2);}
+
+/* ROADMAP */
+.phblock{margin-bottom:24px;}
+.phhead{display:flex;align-items:center;gap:10px;padding:12px 15px;border-radius:var(--r);
+  border:1px solid var(--bo);margin-bottom:10px;position:relative;overflow:hidden;
+  cursor:pointer;transition:all .15s;}
+.phhead:hover{border-color:var(--b2);}
+.phhead::before{content:'';position:absolute;inset:0;opacity:.03;}
+.phf::before{background:var(--teal);}.phf{border-color:rgba(62,207,160,.2);}
+.phi::before{background:var(--ac);}.phi{border-color:rgba(124,110,245,.2);}
+.pha::before{background:var(--gold);}.pha{border-color:rgba(232,184,75,.2);}
+.phe::before{background:var(--coral);}.phe{border-color:rgba(255,107,107,.2);}
+.phnum{font-family:var(--fh);font-size:22px;font-weight:800;opacity:.3;flex-shrink:0;}
+.phm{flex:1;}.phlv{font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px;}
+.phname{font-family:var(--fh);font-size:13px;font-weight:700;}
+.phct{font-size:11px;color:var(--t3);white-space:nowrap;}
+.phch{color:var(--t3);font-size:10px;transition:transform .2s;}.phch.op{transform:rotate(180deg);}
+.ritems{padding-left:12px;border-left:2px solid var(--bo);margin-left:8px;
+  display:flex;flex-direction:column;gap:7px;}
+.ri{background:var(--sur);border:1px solid var(--bo);border-radius:var(--r2);
+  padding:12px 13px;display:flex;align-items:flex-start;gap:10px;transition:all .15s;position:relative;}
+.ri::before{content:'';position:absolute;left:-14px;top:50%;transform:translateY(-50%);
+  width:5px;height:1px;background:var(--b2);}
+.ri:hover{border-color:var(--b2);background:var(--su2);}
+.ri.sd{border-color:rgba(62,207,160,.2);background:rgba(62,207,160,.03);}
+.ri.sr{border-color:rgba(124,110,245,.2);background:rgba(124,110,245,.03);}
+.rind{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;background:var(--t3);transition:all .2s;}
+.sd .rind{background:var(--teal);box-shadow:0 0 5px rgba(62,207,160,.4);}
+.sr .rind{background:var(--ac);box-shadow:0 0 5px rgba(124,110,245,.4);animation:pulse 1.8s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.rcon{flex:1;min-width:0;}
+.rtitle{font-family:var(--fh);font-size:12px;font-weight:600;margin-bottom:3px;}
+.sd .rtitle{color:var(--t3);text-decoration:line-through;text-decoration-color:var(--t3);}
+.rdesc{font-size:11px;color:var(--t3);line-height:1.55;margin-bottom:5px;}
+.rbadges{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px;}
+.rb{font-size:10px;padding:1px 6px;border-radius:100px;border:1px solid var(--bo);color:var(--t3);}
+.rb.nf{background:var(--tl2);color:var(--teal);border-color:rgba(62,207,160,.25);}
+.rprac{background:var(--bg3);border-radius:var(--r2);padding:8px 10px;font-size:11px;
+  color:var(--t2);border-left:2px solid var(--ac);line-height:1.55;display:none;margin-top:5px;}
+.ri.xp .rprac{display:block;}
+.rpbtn{background:none;border:none;color:var(--t3);font-size:11px;cursor:pointer;
+  font-family:var(--fb);padding:3px 0;margin-top:2px;}
+.rpbtn:hover{color:var(--ac);}
+.stg{display:flex;gap:3px;flex-shrink:0;}
+.stb{border:1px solid var(--bo);border-radius:4px;padding:3px 8px;font-size:11px;
+  background:var(--bg3);color:var(--t3);cursor:pointer;font-family:var(--fb);transition:all .12s;font-weight:400;}
+.stb:hover{border-color:var(--b2);color:var(--t2);}
+.stb.ad{background:var(--tl2);border-color:var(--tlb);color:var(--teal);font-weight:500;}
+.stb.ar{background:var(--ag);border-color:var(--ab);color:var(--ac);font-weight:500;}
+.stb.ap{background:var(--bg3);border-color:var(--bo);color:var(--t3);}
+
+/* TIPS */
+.tlist{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.tip{background:var(--sur);border:1px solid var(--bo);border-radius:var(--r3);
+  padding:13px 15px;display:grid;grid-template-columns:28px 1fr;gap:12px;box-shadow:var(--sh);transition:box-shadow .12s;}
+.tip:hover{box-shadow:var(--sh2);border-color:var(--b2);}
+.tnum{font-size:16px;font-weight:600;color:var(--b3);line-height:1;}
+.tb h4{font-size:13px;font-weight:500;color:var(--tx);margin-bottom:4px;}
+.tb p{font-size:13px;color:var(--t2);line-height:1.6;}
+
+/* ANTI-PATTERNS */
+.ap{background:var(--sur);border:1px solid var(--bo);border-radius:var(--r3);
+  padding:12px 15px;display:grid;grid-template-columns:22px 1fr;gap:12px;margin-bottom:8px;box-shadow:var(--sh);}
+.apx{font-size:16px;font-weight:700;color:var(--coral);}
+.apb h4{font-size:13px;font-weight:500;color:var(--tx);margin-bottom:4px;}
+.apb p{font-size:13px;color:var(--t2);line-height:1.6;}
+
+/* TABLE */
+.ct-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.ct{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:20px;min-width:380px;}
+.ct th{text-align:left;padding:8px 11px;background:var(--bg2);color:var(--t3);font-size:11px;
+  text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--bo);font-weight:600;}
+.ct td{padding:8px 11px;border-bottom:1px solid var(--bo);color:var(--t2);vertical-align:top;}
+.ct tr:hover td{background:var(--bg2);color:var(--tx);}
+.ct td:first-child{color:var(--tx);font-weight:500;}
+
+/* RESOURCES */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-bottom:16px;}
+.rl{display:flex;align-items:center;gap:8px;padding:11px 12px;background:var(--sur);
+  border:1px solid var(--bo);border-radius:var(--r3);color:var(--t2);font-size:13px;
+  transition:all .12s;text-decoration:none;box-shadow:var(--sh);}
+.rl:hover{color:var(--tx);background:var(--su2);border-color:var(--b2);transform:translateX(2px);text-decoration:none;}
+.ri2{font-size:17px;flex-shrink:0;}
+.rb2 h4{font-size:12px;font-weight:500;color:var(--tx);margin-bottom:1px;}
+.rb2 p{font-size:11px;color:var(--t3);}
+.ra{margin-left:auto;color:var(--t3);font-size:10px;transition:transform .12s;flex-shrink:0;}
+.rl:hover .ra{transform:translateX(2px);}
+
+/* ============ FULL RESPONSIVE ============ */
+
+/* Tablet */
+@media(max-width:1060px){
+  .main{padding:22px 22px;}
+  .sidebar{width:190px;}
+}
+
+/* Mobile */
+@media(max-width:768px){
+  /* Show hamburger, hide sidebar */
+  .sidebar{display:none;}
+  .ham{display:flex;align-items:center;justify-content:center;}
+  /* Stack layout vertically */
+  .app,.layout{flex-direction:column;}
+  .main{padding:14px 13px;}
+  /* 2-col stats */
+  .dgrid{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .dnum{font-size:22px;}
+  /* Single col grids */
+  .pgrid,.mtgrid{grid-template-columns:1fr;}
+  .rgrid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));}
+  /* Roadmap item: wrap status buttons to next row */
+  .ri{flex-wrap:wrap;}
+  .stg{width:100%;justify-content:flex-end;margin-top:7px;}
+  /* Smaller titles */
+  .stitle{font-size:18px;}
+  /* Nav items smaller */
+  .nv{padding:0 9px;font-size:12px;}
+  /* Hide theme label on very small bars */
+  .th-lbl{display:none;}
+  /* Update cards */
+  .uad{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  /* Progress counts wrap */
+  .rsc{flex-wrap:wrap;gap:9px;}
+  /* HL boxes */
+  .hl{padding:11px 12px;}
+  /* Tables scroll */
+  .ct-wrap{margin:0 -2px;}
+}
+
+/* Small phones */
+@media(max-width:400px){
+  .main{padding:11px 10px;}
+  .dgrid{gap:7px;}
+  .dnum{font-size:20px;}
+  .dlbl{font-size:10px;}
+  .stitle{font-size:16px;}
+  .nv{padding:0 7px;font-size:11px;}
+  .brand{font-size:13px;}
+  .phhead{padding:10px 12px;}
+  .phnum{font-size:18px;}
+}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge">Self-Driven Learning System</div>
-  <h1>Claude Mastery Hub</h1>
-  <p>From first prompt to expert practitioner — a structured system for mastering Claude across product, engineering, and strategy.</p>
-  <div class="hero-stats">
-    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Skill Levels</span></div>
-    <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Tips &amp; Tricks</span></div>
-    <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Templates</span></div>
-    <div class="stat"><span class="stat-num">Live</span><span class="stat-label">Updates Tracked</span></div>
+<nav class="topbar">
+  <button class="ham" onclick="openDrawer()" aria-label="Open menu">
+    <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <line x1="2" y1="4.5" x2="15" y2="4.5"/>
+      <line x1="2" y1="8.5" x2="15" y2="8.5"/>
+      <line x1="2" y1="12.5" x2="15" y2="12.5"/>
+    </svg>
+  </button>
+  <div class="brand">Claude<span>Hub</span></div>
+  <div class="navscroll">
+    <button class="nv active" onclick="nav('dashboard')"><span class="nd"></span>Dashboard</button>
+    <button class="nv" onclick="nav('prompts')"><span class="nd"></span>Prompt Library</button>
+    <button class="nv" onclick="nav('roadmap')"><span class="nd"></span>Roadmap</button>
+    <button class="nv" onclick="nav('updates')"><span class="nd"></span>Updates</button>
+    <button class="nv" onclick="nav('tips')"><span class="nd"></span>Tips &amp; Tricks</button>
+    <button class="nv" onclick="nav('antipatterns')"><span class="nd"></span>Anti-Patterns</button>
+    <button class="nv" onclick="nav('resources')"><span class="nd"></span>Resources</button>
+  </div>
+  <div class="thr">
+    <button class="thbtn" onclick="toggleTheme()"><span id="thi">🌙</span><span id="thl" class="th-lbl">Dark</span></button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="dov" id="dov" onclick="closeDrawer()"></div>
+<div class="dwr" id="dwr">
+  <button class="dwr-close" onclick="closeDrawer()">✕</button>
+  <div class="sbs"><div class="sbl">Main</div>
+    <button class="sbk" onclick="nav('dashboard');closeDrawer()"><span class="sbi">🏠</span>Dashboard</button>
+    <button class="sbk" onclick="nav('roadmap');closeDrawer()"><span class="sbi">🗺</span>Roadmap</button>
+    <button class="sbk" onclick="nav('updates');closeDrawer()"><span class="sbi">🔔</span>Updates</button>
+  </div>
+  <div class="sbs"><div class="sbl">Prompting</div>
+    <button class="sbk" onclick="nav('prompts');closeDrawer()"><span class="sbi">✍</span>Prompt Library</button>
+    <button class="sbk" onclick="nav('tips');closeDrawer()"><span class="sbi">⚡</span>Tips &amp; Tricks</button>
+    <button class="sbk" onclick="nav('antipatterns');closeDrawer()"><span class="sbi">⛔</span>Anti-Patterns</button>
+  </div>
+  <div class="sbs"><div class="sbl">Reference</div>
+    <button class="sbk" onclick="nav('resources');closeDrawer()"><span class="sbi">📚</span>Resources</button>
   </div>
 </div>
 
-<!-- NAV -->
-<nav class="nav">
-  <a class="nav-item active" onclick="showSection(&#39;overview&#39;)"><span class="nav-dot"></span> Overview</a>
-  <a class="nav-item" onclick="showSection(&#39;tips&#39;)"><span class="nav-dot"></span> Tips &amp; Tricks</a>
-  <a class="nav-item" onclick="showSection(&#39;prompts&#39;)"><span class="nav-dot"></span> Prompt Templates</a>
-  <a class="nav-item" onclick="showSection(&#39;levels&#39;)"><span class="nav-dot"></span> Learning Path</a>
-  <a class="nav-item" onclick="showSection(&#39;updates&#39;)"><span class="nav-dot"></span> Updates</a>
-  <a class="nav-item" onclick="showSection(&#39;resources&#39;)"><span class="nav-dot"></span> Docs &amp; Resources</a>
-  <a class="nav-item" onclick="showSection(&#39;antipatterns&#39;)"><span class="nav-dot"></span> Anti-Patterns</a>
-  <a class="nav-item" onclick="showSection(&#39;playbook&#39;)"><span class="nav-dot"></span> Playbook</a>
-</nav>
-
-<!-- LAYOUT -->
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-label">Getting Started</div>
-      <a class="sidebar-link active" onclick="showSection(&#39;overview&#39;)">
-        <span class="sidebar-icon">🗺</span> Overview
-      </a>
-      <a class="sidebar-link" onclick="showSection(&#39;levels&#39;)">
-        <span class="sidebar-icon">📈</span> Learning Path
-      </a>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Core Skills</div>
-      <a class="sidebar-link" onclick="showSection(&#39;tips&#39;)">
-        <span class="sidebar-icon">⚡</span> Tips &amp; Tricks
-      </a>
-      <a class="sidebar-link" onclick="showSection(&#39;prompts&#39;)">
-        <span class="sidebar-icon">✍</span> Prompt Templates
-      </a>
-      <a class="sidebar-link" onclick="showSection(&#39;antipatterns&#39;)">
-        <span class="sidebar-icon">⛔</span> Anti-Patterns
-      </a>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Reference</div>
-      <a class="sidebar-link" onclick="showSection(&#39;updates&#39;)">
-        <span class="sidebar-icon">🔔</span> Latest Updates
-      </a>
-      <a class="sidebar-link" onclick="showSection(&#39;resources&#39;)">
-        <span class="sidebar-icon">📚</span> Docs &amp; Resources
-      </a>
-      <a class="sidebar-link" onclick="showSection(&#39;playbook&#39;)">
-        <span class="sidebar-icon">📓</span> Playbook
-      </a>
-    </div>
-    <div class="sidebar-section" style="margin-top: 40px;">
-      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 16px;">
-        <div style="font-family: var(--font-head); font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--accent);">Current Model</div>
-        <div style="font-size: 12px; color: var(--text2); line-height: 1.6;">Claude Sonnet 4.6<br><span style="color: var(--text3);">claude-sonnet-4-6</span></div>
+<div class="app">
+<aside class="sidebar">
+  <div class="sbs"><div class="sbl">Main</div>
+    <button class="sbk active" onclick="nav('dashboard')"><span class="sbi">🏠</span>Dashboard</button>
+    <button class="sbk" onclick="nav('roadmap')"><span class="sbi">🗺</span>Roadmap</button>
+    <button class="sbk" onclick="nav('updates')"><span class="sbi">🔔</span>Updates</button>
+  </div>
+  <div class="sbs"><div class="sbl">Prompting</div>
+    <button class="sbk" onclick="nav('prompts')"><span class="sbi">✍</span>Prompt Library</button>
+    <button class="sbk" onclick="nav('tips')"><span class="sbi">⚡</span>Tips &amp; Tricks</button>
+    <button class="sbk" onclick="nav('antipatterns')"><span class="sbi">⛔</span>Anti-Patterns</button>
+  </div>
+  <div class="sbs"><div class="sbl">Reference</div>
+    <button class="sbk" onclick="nav('resources')"><span class="sbi">📚</span>Docs &amp; Resources</button>
+  </div>
+  <div class="sbs" style="margin-top:16px;">
+    <div class="sb-model">
+      <div class="sb-model-t">Active Model</div>
+      <div class="sb-model-v">Claude Sonnet 4.6<br>
+        <span style="color:var(--t3);font-size:11px;">claude-sonnet-4-6</span><br>
+        <span style="color:var(--teal);font-size:11px;">● Live Apr 2026</span>
       </div>
     </div>
-  </aside>
+  </div>
+  </div>
+</aside>
 
-  <!-- MAIN -->
-  <main class="main">
+<main class="main">
 
-    <!-- ══ OVERVIEW ══ -->
-    <section id="s-overview" class="section active">
-      <div class="section-header">
-        <div class="section-tag">Start Here</div>
-        <h1 class="section-title">Master Claude Systematically</h1>
-        <p class="section-desc">Not just a Q&amp;A tool — a thinking partner, architect, and co-creator for real-world work.</p>
+<!-- ════ DASHBOARD ════ -->
+<section id="s-dashboard" class="section active">
+  <span class="stag">Your Learning Command Center</span>
+  <h1 class="stitle">Claude Mastery Hub</h1>
+  <p class="sdesc">One place for everything — live updates with demos, 80+ prompt templates, interactive roadmap with practice guides, and techniques from beginner to expert.</p>
+  <div class="dgrid">
+    <div class="dcard"><span class="dnum" id="d-done">0</span><span class="dlbl">Milestones Done</span></div>
+    <div class="dcard"><span class="dnum" id="d-pct">0%</span><span class="dlbl">Roadmap Progress</span></div>
+    <div class="dcard"><span class="dnum">80+</span><span class="dlbl">Prompt Templates</span></div>
+    <div class="dcard"><span class="dnum">7</span><span class="dlbl">Features This Month</span></div>
+  </div>
+  <h2 class="sub">🔥 Must Try Right Now</h2>
+  <div class="mtgrid" id="mt-container"></div>
+  <h2 class="sub">⚡ Latest Updates — What Changed &amp; Why It Matters</h2>
+  <div class="uab" id="dash-updates"></div>
+  <h2 class="sub">Your Progress</h2>
+  <div class="rmsum">
+    <div class="rst">
+      <div class="rsn">Roadmap Progress</div>
+      <div class="rsc">
+        <span class="rsci"><span class="rsd" style="background:var(--teal)"></span>Done: <strong id="rs-done">0</strong></span>
+        <span class="rsci"><span class="rsd" style="background:var(--ac)"></span>Doing: <strong id="rs-run">0</strong></span>
+        <span class="rsci"><span class="rsd" style="background:var(--t3)"></span>Pending: <strong id="rs-pen">0</strong></span>
       </div>
+    </div>
+    <div class="ptrack"><div class="pfill" id="pf-main"></div></div>
+    <div class="plbl"><span id="pp-main">0</span>% · <span id="pl-main">Just getting started</span> · <button style="background:none;border:none;color:var(--ac);cursor:pointer;font-size:11px;font-family:var(--fb);padding:0;" onclick="nav('roadmap')">Open roadmap →</button></div>
+  </div>
+</section>
 
-      <div class="highlight">
-        <span class="highlight-icon">🎯</span>
-        <div class="highlight-text">
-          <h4>Your Goal</h4>
-          <p>Build a deep, practical understanding of Claude to extract consistent, production-quality outputs — across product decisions, backend design, writing, and complex problem-solving.</p>
-        </div>
+<!-- ════ PROMPTS ════ -->
+<section id="s-prompts" class="section">
+  <span class="stag">80+ Templates · 10 Categories · New Prompts with Every Update</span>
+  <h1 class="stitle">Prompt Library</h1>
+  <p class="sdesc">Every prompt is parameterized — replace the highlighted parts. New prompts are automatically added when Claude releases new features or capabilities.</p>
+  <input type="text" class="psrch" placeholder="Search by title, use case, or category..." oninput="filterP(this.value)" id="psearch">
+  <div class="pfilts" id="pfilts"></div>
+  <div class="pgrid" id="pgrid"></div>
+</section>
+
+<!-- ════ ROADMAP ════ -->
+<section id="s-roadmap" class="section">
+  <span class="stag">35 Milestones · 5 Phases · Practice Guides Included</span>
+  <h1 class="stitle">Learning Roadmap</h1>
+  <p class="sdesc">Step-by-step from first prompt to expert. Click any item to expand its practice guide. Mark status as you go — saved automatically in your browser. New milestones appear when Claude adds new features.</p>
+  <div class="hl hl-teal">
+    <span class="hli">💡</span>
+    <div class="hlb"><h4>How to use this roadmap</h4>
+      <p>Start Phase 1. Mark <strong style="color:var(--ac)">▶ Doing</strong> when you begin, <strong style="color:var(--teal)">✓ Done</strong> only after genuinely practicing — not just reading. Click any item to expand the "How to practice" guide. The goal is building real skill, not checking boxes.</p>
+    </div>
+  </div>
+  <div class="rmsum">
+    <div class="rst">
+      <div class="rsn">Overall Progress</div>
+      <div class="rsc">
+        <span class="rsci"><span class="rsd" style="background:var(--teal)"></span>Done: <strong id="rm-done">0</strong></span>
+        <span class="rsci"><span class="rsd" style="background:var(--ac)"></span>Doing: <strong id="rm-run">0</strong></span>
+        <span class="rsci"><span class="rsd" style="background:var(--t3)"></span>Pending: <strong id="rm-pen">0</strong></span>
       </div>
+    </div>
+    <div class="ptrack"><div class="pfill" id="pf-rm"></div></div>
+    <div class="plbl"><span id="pp-rm">0</span>% · <span id="pl-rm">Just getting started</span></div>
+  </div>
+  <div id="rm-container"></div>
+</section>
 
-      <div class="progress-track">
-        <div class="progress-step done">
-          <span class="progress-step-num">01</span>
-          <div class="progress-step-label">Foundations</div>
-        </div>
-        <div class="progress-step active-step">
-          <span class="progress-step-num">02</span>
-          <div class="progress-step-label">Intermediate</div>
-        </div>
-        <div class="progress-step">
-          <span class="progress-step-num">03</span>
-          <div class="progress-step-label">Advanced</div>
-        </div>
-        <div class="progress-step">
-          <span class="progress-step-num">04</span>
-          <div class="progress-step-label">Expert</div>
-        </div>
-      </div>
+<!-- ════ UPDATES ════ -->
+<section id="s-updates" class="section">
+  <span class="stag">Every Update With Demo Prompts, Examples &amp; Official Links</span>
+  <h1 class="stitle">Updates &amp; New Features</h1>
+  <p class="sdesc">Each update: what changed, why it matters for your work, a demo prompt to try right now, and links to official docs and YouTube demos.</p>
+  <div class="hl">
+    <span class="hli">📡</span>
+    <div class="hlb"><h4>Official sources</h4>
+      <p><a href="https://www.anthropic.com/news" target="_blank">anthropic.com/news</a> · <a href="https://docs.anthropic.com" target="_blank">docs.anthropic.com</a> · <a href="https://github.com/anthropics" target="_blank">GitHub SDK releases</a></p>
+    </div>
+  </div>
+  <div id="uc-container"></div>
+</section>
 
-      <h2 class="sub">What Claude Excels At</h2>
-      <div class="card-grid">
-        <div class="card" style="--card-accent: var(--teal); --icon-bg: var(--teal2);">
-          <div class="card-icon">🏗</div>
-          <h3>Technical Architecture</h3>
-          <p>Backend flows, system design, API contracts, database schemas, and edge case reasoning for complex engineering problems.</p>
-          <span class="card-tag">Engineering</span>
-        </div>
-        <div class="card" style="--card-accent: var(--accent); --icon-bg: var(--accent-glow);">
-          <div class="card-icon">📋</div>
-          <h3>Product Thinking</h3>
-          <p>PRDs, user stories, feature trade-offs, UX decisions, and strategic product framing with real-world analogies.</p>
-          <span class="card-tag">Product</span>
-        </div>
-        <div class="card" style="--card-accent: var(--gold); --icon-bg: var(--gold2);">
-          <div class="card-icon">✍</div>
-          <h3>High-Quality Writing</h3>
-          <p>Stakeholder comms, engineering docs, Slack messages, executive summaries — all with the right tone and structure.</p>
-          <span class="card-tag">Communication</span>
-        </div>
-        <div class="card" style="--card-accent: var(--coral); --icon-bg: var(--coral2);">
-          <div class="card-icon">🔍</div>
-          <h3>Debugging &amp; Edge Cases</h3>
-          <p>Root cause analysis, failure mode mapping, race condition identification, and resilience planning.</p>
-          <span class="card-tag">Quality</span>
-        </div>
-        <div class="card" style="--card-accent: var(--blue); --icon-bg: var(--blue2);">
-          <div class="card-icon">📊</div>
-          <h3>Strategy &amp; Analysis</h3>
-          <p>Market positioning, growth loops, competitive analysis, metric trees, and prioritization frameworks.</p>
-          <span class="card-tag">Strategy</span>
-        </div>
-        <div class="card" style="--card-accent: var(--teal); --icon-bg: var(--teal2);">
-          <div class="card-icon">🔄</div>
-          <h3>Workflow Design</h3>
-          <p>Multi-step process automation, decision trees, workflow orchestration with failure handling.</p>
-          <span class="card-tag">Automation</span>
-        </div>
-      </div>
+<!-- ════ TIPS ════ -->
+<section id="s-tips" class="section">
+  <span class="stag">Prompting Mastery</span>
+  <h1 class="stitle">Tips &amp; Tricks</h1>
+  <p class="sdesc">Techniques that consistently produce better, more reliable outputs from Claude.</p>
+  <h2 class="sub">Fundamentals (Learn These First)</h2>
+  <div class="tlist">
+    <div class="tip"><div class="tnum">01</div><div class="tb"><h4>Role + Context + Goal in every prompt</h4><p>Tell Claude who to be, what context applies, and exactly what you need. <code>You are a senior backend engineer at a fintech startup. We're building payment reconciliation. Explain idempotency keys with production-ready pseudocode.</code></p></div></div>
+    <div class="tip"><div class="tnum">02</div><div class="tb"><h4>Chain-of-Thought on complex tasks</h4><p>Add <code>Think step by step before answering</code>. Forces Claude to reason through logic first — the single highest-leverage technique for complex problems. Quality difference is immediate and dramatic.</p></div></div>
+    <div class="tip"><div class="tnum">03</div><div class="tb"><h4>Specify output format explicitly</h4><p>Say exactly what you want: <code>Return as JSON</code>, <code>Use a markdown table</code>, <code>Numbered steps</code>, <code>Flowing prose, no headers</code>. Claude mirrors format unless directed — always direct it.</p></div></div>
+    <div class="tip"><div class="tnum">04</div><div class="tb"><h4>XML tags for complex prompts</h4><p>Separate sections with <code>&lt;context&gt;</code>, <code>&lt;task&gt;</code>, <code>&lt;constraints&gt;</code>, <code>&lt;format&gt;</code> tags. Claude parses structured prompts with significantly higher accuracy than plain paragraphs.</p></div></div>
+    <div class="tip"><div class="tnum">05</div><div class="tb"><h4>Audience + depth specification</h4><p>Tell Claude who reads this: <code>Explain for a non-technical PM</code> vs <code>Assume senior SRE audience</code>. This single change dramatically affects technical depth, terminology, and assumed knowledge.</p></div></div>
+    <div class="tip"><div class="tnum">06</div><div class="tb"><h4>Negative constraints</h4><p>Tell Claude what NOT to do: <code>Don't use third-party services</code>, <code>Avoid theoretical examples</code>, <code>Skip the introduction paragraph</code>. As powerful as positive instructions — often more so for controlling output shape.</p></div></div>
+  </div>
+  <h2 class="sub">Power Techniques (Intermediate → Advanced)</h2>
+  <div class="tlist">
+    <div class="tip"><div class="tnum">07</div><div class="tb"><h4>Few-shot prompting (examples first)</h4><p>Give 1-2 examples of your ideal output before asking the real question. The most reliable way to control output style, format, and depth. Claude infers your pattern instantly — format, tone, length, everything.</p></div></div>
+    <div class="tip"><div class="tnum">08</div><div class="tb"><h4>Challenge your own assumptions</h4><p>After any design or plan: <code>Play a skeptical senior engineer. What are the 5 biggest weaknesses? What would break first at 10x scale? What assumptions might not hold?</code> Surfaces blind spots better than formal reviews.</p></div></div>
+    <div class="tip"><div class="tnum">09</div><div class="tb"><h4>Multiple options + trade-offs → recommendation</h4><p><code>Give 3 approaches with trade-offs for performance, complexity, and cost</code> — then push: <code>Given my context is X and constraint is Y, which do you specifically recommend and why?</code> Forces concrete advice.</p></div></div>
+    <div class="tip"><div class="tnum">10</div><div class="tb"><h4>Flag uncertainty explicitly</h4><p>Add: <code>Rate your confidence (High/Medium/Low) per section. Flag anything uncertain.</code> Critical before acting on technical outputs. Claude will mark the gaps. Verify those parts independently.</p></div></div>
+    <div class="tip"><div class="tnum">11</div><div class="tb"><h4>Simulate stress tests</h4><p><code>Walk through what breaks as we go from current load to 10x to 100x. At each level, what fails first and why?</code> Claude identifies architectural weaknesses before they hit production. Use before every major design review.</p></div></div>
+    <div class="tip"><div class="tnum">12</div><div class="tb"><h4>Extended Thinking mode</h4><p>Enable in claude.ai or add <code>Take time to reason through this thoroughly. Show your reasoning process before answering.</code> Produces qualitatively different, deeper answers for complex decisions — not just more words.</p></div></div>
+    <div class="tip"><div class="tnum">13</div><div class="tb"><h4>Projects for persistent context</h4><p>Set up a Claude Project once with your role, tech stack, and company context. Every session inherits it. You stop repeating context. Highest ROI one-time setup — takes 10 minutes, saves hours every week.</p></div></div>
+    <div class="tip"><div class="tnum">14</div><div class="tb"><h4>Iterative depth drilling</h4><p>First response is always a draft. Push: <code>Too generic. Make it specific to a B2B SaaS with 50k daily transactions, a 3-person backend team, and PostgreSQL on AWS RDS.</code> Each push adds a layer of depth.</p></div></div>
+  </div>
+  <h2 class="sub">Claude vs Other LLMs — Quick Reference</h2>
+  <table class="ct">
+    <thead><tr><th>Dimension</th><th>Claude 4.6</th><th>GPT-4o</th><th>Gemini</th></tr></thead>
+    <tbody>
+      <tr><td>Long-form reasoning</td><td><span class="bdg-teal">Excellent</span></td><td>Good</td><td>Good</td></tr>
+      <tr><td>Instruction following</td><td><span class="bdg-teal">Best-in-class</span></td><td>Good</td><td>Average</td></tr>
+      <tr><td>Code generation</td><td><span class="bdg-teal">Excellent</span></td><td><span class="bdg-teal">Excellent</span></td><td>Good</td></tr>
+      <tr><td>Context window</td><td><span class="bdg-teal">200k tokens</span></td><td>128k</td><td>1M (1.5 Pro)</td></tr>
+      <tr><td>Nuance &amp; tone control</td><td><span class="bdg-teal">Best-in-class</span></td><td>Good</td><td>Average</td></tr>
+      <tr><td>Caution / refusals</td><td><span class="bdg-amber">More cautious</span></td><td>Moderate</td><td>Moderate</td></tr>
+    </tbody>
+  </table>
+</section>
 
-      <h2 class="sub">How Claude Thinks vs. How You Should Prompt</h2>
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Dimension</th>
-            <th>How Claude Works</th>
-            <th>Your Prompt Strategy</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Context</td>
-            <td>No memory between sessions; reads only what you provide</td>
-            <td>Always front-load role, goal, and constraints</td>
-          </tr>
-          <tr>
-            <td>Depth</td>
-            <td>Calibrates response depth to prompt specificity</td>
-            <td>Specify depth: "step-by-step", "brief", "expert-level"</td>
-          </tr>
-          <tr>
-            <td>Format</td>
-            <td>Defaults to markdown unless told otherwise</td>
-            <td>Request format explicitly: table, bullet, prose, JSON</td>
-          </tr>
-          <tr>
-            <td>Accuracy</td>
-            <td>Confident even when uncertain — can hallucinate</td>
-            <td>Ask it to flag uncertainty; validate critical facts</td>
-          </tr>
-          <tr>
-            <td>Reasoning</td>
-            <td>Better output when asked to think step-by-step</td>
-            <td>Use "think step by step" or chain-of-thought prompts</td>
-          </tr>
-          <tr>
-            <td>Refusal</td>
-            <td>May be cautious on ambiguous or borderline requests</td>
-            <td>Frame intent clearly; provide legitimate context</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+<!-- ════ ANTI-PATTERNS ════ -->
+<section id="s-antipatterns" class="section">
+  <span class="stag">What Kills Output Quality</span>
+  <h1 class="stitle">Anti-Patterns to Avoid</h1>
+  <p class="sdesc">A small set of repeatable mistakes caps most users at 60% quality. Eliminating these doubles output quality with zero extra effort.</p>
+  <div class="hl hl-amber"><span class="hli">⚠️</span><div class="hlb"><h4>Read this first</h4><p>Before rating any Claude response as poor — audit your prompt against these anti-patterns first. Most "Claude failures" are actually prompt failures.</p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>Vague open-ended prompts</h4><p>"Tell me about payments" → Wikipedia overview. Always specify: which aspect, what depth, what format, for what purpose. Vague in = generic out. Every single time.</p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>Trusting without verification</h4><p>Claude is confident even when wrong. Never ship code, data, or decisions based solely on Claude's output. Validate technical facts, APIs, regulations, and numbers independently.</p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>No context between sessions</h4><p>Claude has zero memory between chats. Use Projects for persistent context, or always re-establish role + constraints at the start of every session. This is non-negotiable for quality.</p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>Accepting the first response as final</h4><p>Real value comes from iteration. Push back: "Make this specific to X", "What edge cases are missing?", "Give me the opposite view." First responses are always drafts, never finals.</p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>Overloading one prompt</h4><p>5 questions in one message → Claude addresses all superficially. One clear goal per interaction. Use follow-ups for depth. Separate concerns into separate messages.</p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>Not asking for edge cases</h4><p>Claude defaults to the happy path. For any design or flow, always add: <code>What could go wrong? What failure modes am I missing? What are the edge cases I haven't considered?</code></p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>Accepting "it depends" without drilling</h4><p>When Claude hedges, force a concrete answer: <code>Given my context is X and constraint is Y, which specific approach do you recommend and why?</code> Never let it off the hook with non-answers.</p></div></div>
+  <div class="ap"><div class="apx">✗</div><div class="apb"><h4>Using Claude as a search engine for current info</h4><p>Claude has a knowledge cutoff. For current regulations, recent API changes, or fast-moving topics — use built-in web search or verify with official docs. Don't trust training data for time-sensitive facts.</p></div></div>
+</section>
 
-    <!-- ══ TIPS ══ -->
-    <section id="s-tips" class="section">
-      <div class="section-header">
-        <div class="section-tag">Core Techniques</div>
-        <h1 class="section-title">Tips &amp; Tricks</h1>
-        <p class="section-desc">Proven techniques to get consistently better outputs from Claude.</p>
-      </div>
+<!-- ════ RESOURCES ════ -->
+<section id="s-resources" class="section">
+  <span class="stag">Official &amp; Curated</span>
+  <h1 class="stitle">Docs &amp; Resources</h1>
+  <p class="sdesc">The best places to learn, reference, and stay current with Claude.</p>
+  <h2 class="sub">Official Anthropic</h2>
+  <div class="rgrid">
+    <a href="https://docs.anthropic.com" target="_blank" class="rl"><span class="ri2">📘</span><div class="rb2"><h4>Anthropic Docs</h4><p>Full API reference</p></div><span class="ra">→</span></a>
+    <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" class="rl"><span class="ri2">✍</span><div class="rb2"><h4>Prompt Engineering</h4><p>Official guide</p></div><span class="ra">→</span></a>
+    <a href="https://support.claude.ai" target="_blank" class="rl"><span class="ri2">💬</span><div class="rb2"><h4>Support &amp; FAQ</h4><p>Features, plans, limits</p></div><span class="ra">→</span></a>
+    <a href="https://www.anthropic.com/news" target="_blank" class="rl"><span class="ri2">📰</span><div class="rb2"><h4>Anthropic News</h4><p>Releases &amp; research</p></div><span class="ra">→</span></a>
+    <a href="https://console.anthropic.com" target="_blank" class="rl"><span class="ri2">🖥</span><div class="rb2"><h4>API Console</h4><p>Playground &amp; keys</p></div><span class="ra">→</span></a>
+    <a href="https://github.com/anthropics" target="_blank" class="rl"><span class="ri2">⚙</span><div class="rb2"><h4>Anthropic GitHub</h4><p>SDKs &amp; open source</p></div><span class="ra">→</span></a>
+  </div>
+  <h2 class="sub">Prompt Engineering Deep Dives</h2>
+  <div class="rgrid">
+    <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought" target="_blank" class="rl"><span class="ri2">🔗</span><div class="rb2"><h4>Chain-of-Thought</h4><p>Step-by-step reasoning</p></div><span class="ra">→</span></a>
+    <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags" target="_blank" class="rl"><span class="ri2">🏷</span><div class="rb2"><h4>XML Tags</h4><p>Structure prompts</p></div><span class="ra">→</span></a>
+    <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/multishot-prompting" target="_blank" class="rl"><span class="ri2">🎯</span><div class="rb2"><h4>Few-Shot Prompting</h4><p>Examples = style control</p></div><span class="ra">→</span></a>
+    <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/extended-thinking" target="_blank" class="rl"><span class="ri2">🧠</span><div class="rb2"><h4>Extended Thinking</h4><p>Deep reasoning mode</p></div><span class="ra">→</span></a>
+  </div>
+  <h2 class="sub">Video Learning</h2>
+  <div class="rgrid">
+    <a href="https://www.youtube.com/@anthropic-ai" target="_blank" class="rl"><span class="ri2">▶</span><div class="rb2"><h4>Anthropic YouTube</h4><p>Official demos &amp; talks</p></div><span class="ra">→</span></a>
+    <a href="https://www.youtube.com/results?search_query=claude+ai+prompt+engineering+2025" target="_blank" class="rl"><span class="ri2">🎬</span><div class="rb2"><h4>Prompt Engineering</h4><p>Community tutorials</p></div><span class="ra">→</span></a>
+    <a href="https://www.youtube.com/results?search_query=claude+code+agentic+demo+2025" target="_blank" class="rl"><span class="ri2">💻</span><div class="rb2"><h4>Claude Code Demos</h4><p>Agentic coding videos</p></div><span class="ra">→</span></a>
+    <a href="https://www.youtube.com/results?search_query=anthropic+mcp+model+context+protocol+tutorial" target="_blank" class="rl"><span class="ri2">🔌</span><div class="rb2"><h4>MCP Tutorials</h4><p>Tool integration guide</p></div><span class="ra">→</span></a>
+  </div>
+  <hr class="dv">
+  <h2 class="sub">Free Hosting for This Page</h2>
+  <div class="hl hl-teal"><span class="hli">🚀</span><div class="hlb"><h4>Recommended: Netlify — 2 minutes to deploy</h4>
+    <p>Go to <a href="https://netlify.com" target="_blank">netlify.com</a> → sign up free → drag and drop this HTML file → get a live URL like <code>yourname.netlify.app</code> instantly. No CLI, no config needed.</p>
+  </div></div>
+  <table class="ct">
+    <thead><tr><th>Platform</th><th>Free?</th><th>Deploy</th><th>Custom Domain</th><th>Best For</th></tr></thead>
+    <tbody>
+      <tr><td>Netlify</td><td><span class="bdg-teal">✓ Free</span></td><td>Drag &amp; drop</td><td>✓ Free</td><td>Easiest — recommended</td></tr>
+      <tr><td>GitHub Pages</td><td><span class="bdg-teal">✓ Free</span></td><td>Git push</td><td>✓ Free</td><td>Already use GitHub</td></tr>
+      <tr><td>Vercel</td><td><span class="bdg-teal">✓ Free</span></td><td>CLI or Git</td><td>✓ Free</td><td>Developers</td></tr>
+      <tr><td>Cloudflare Pages</td><td><span class="bdg-teal">✓ Free</span></td><td>Git or upload</td><td>✓ Free</td><td>Fastest CDN globally</td></tr>
+    </tbody>
+  </table>
+  <div class="hl hl-amber"><span class="hli">⚠️</span><div class="hlb"><h4>About data storage when hosted</h4>
+    <p>Roadmap progress uses <code>localStorage</code> — saved in your browser on that device. Works perfectly for personal use. For cross-device sync, add Supabase free tier as a backend (5-minute setup, zero cost).</p>
+  </div></div>
+</section>
 
-      <h2 class="sub">Prompting Fundamentals</h2>
-      <div class="tips-list">
-        <div class="tip">
-          <div class="tip-num">01</div>
-          <div class="tip-content">
-            <h4>Lead with Role + Context + Goal</h4>
-            <p>Always tell Claude who it should act as, what context applies, and what you need. Example: <code>You are a senior backend engineer at a fintech startup. We're building a payment reconciliation system. Explain the idempotency key pattern.</code></p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">02</div>
-          <div class="tip-content">
-            <h4>Ask for Chain-of-Thought Reasoning</h4>
-            <p>For complex decisions, add <code>Think step by step</code> or <code>Reason through this before answering</code>. This forces Claude to work through logic before concluding, reducing hallucinations and improving quality.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">03</div>
-          <div class="tip-content">
-            <h4>Specify Output Format Explicitly</h4>
-            <p>Claude mirrors your format unless directed. Say: <code>Return as a JSON object</code>, <code>Use a markdown table</code>, <code>Write in bullet points with one-line descriptions</code>, or <code>Write in flowing prose, no bullets</code>.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">04</div>
-          <div class="tip-content">
-            <h4>Use XML Tags for Structured Prompts</h4>
-            <p>For complex prompts with multiple parts, use XML-like tags to separate sections: <code>&lt;context&gt;...&lt;/context&gt;</code>, <code>&lt;task&gt;...&lt;/task&gt;</code>, <code>&lt;constraints&gt;...&lt;/constraints&gt;</code>. Claude handles these very well.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">05</div>
-          <div class="tip-content">
-            <h4>Set Depth and Audience Explicitly</h4>
-            <p>Tell Claude who will read the output: <code>Explain for a non-technical PM</code> or <code>Assume the reader is a senior SRE</code>. Combine with depth: <code>Give a thorough technical breakdown with edge cases</code>.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">06</div>
-          <div class="tip-content">
-            <h4>Use Negative Constraints to Narrow Output</h4>
-            <p>Tell Claude what NOT to do: <code>Don't suggest third-party services</code>, <code>Avoid theoretical explanations — only practical examples</code>, <code>Don't use jargon</code>. This is as powerful as positive instructions.</p>
-          </div>
-        </div>
-      </div>
-
-      <h2 class="sub">Power User Techniques</h2>
-      <div class="tips-list">
-        <div class="tip">
-          <div class="tip-num">07</div>
-          <div class="tip-content">
-            <h4>Iterative Refinement Loops</h4>
-            <p>Treat Claude like a collaborator. First ask for a draft, then: <code>This is good but too generic. Make it more specific to a B2B SaaS context with 10k transactions/day.</code> Each turn builds depth.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">08</div>
-          <div class="tip-content">
-            <h4>Ask Claude to Challenge Your Assumptions</h4>
-            <p>After presenting a design or plan, explicitly ask: <code>What are the weaknesses in this approach? What am I missing?</code> — This surfaces blind spots. Don't just ask for validation.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">09</div>
-          <div class="tip-content">
-            <h4>Request Multiple Options with Trade-offs</h4>
-            <p>Instead of asking for "the best solution", ask: <code>Give me 3 different approaches with trade-offs for each — performance, complexity, and cost</code>. Decision quality improves massively.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">10</div>
-          <div class="tip-content">
-            <h4>Prime with Examples (Few-Shot)</h4>
-            <p>Give 1-2 examples of the output you want before asking for the real one. Claude learns your format, tone, and depth instantly. This is the single most effective way to control output style.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">11</div>
-          <div class="tip-content">
-            <h4>Ask It to Flag Uncertainty</h4>
-            <p>Add: <code>If you're not confident about any part, explicitly say so.</code> Claude will mark uncertain claims with caveats — critical for technical and factual content you'll act on.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">12</div>
-          <div class="tip-content">
-            <h4>Simulate Real-World Scenarios</h4>
-            <p>For backend or product design: <code>Simulate what happens when 10,000 users hit this endpoint simultaneously during a flash sale. Walk through each failure point.</code> — Claude stress-tests designs effectively.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ PROMPT TEMPLATES ══ -->
-    <section id="s-prompts" class="section">
-      <div class="section-header">
-        <div class="section-tag">Ready-to-Use</div>
-        <h1 class="section-title">Prompt Templates</h1>
-        <p class="section-desc">Copy, adapt, and reuse — a growing library of battle-tested prompts.</p>
-      </div>
-
-      <div id="templates">
-
-        <div class="template-card">
-          <div class="template-header" onclick="toggleTemplate(this)">
-            <div class="template-title">
-              🏗 System Design Review
-              <span class="template-badge">Backend</span>
-            </div>
-            <span class="template-chevron open">▼</span>
-          </div>
-          <div class="template-body open">
-            <div class="prompt-box">
-              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
-              You are a senior backend engineer reviewing a system design.<br><br>
-              <span class="placeholder">[Paste your system design here]</span><br><br>
-              Review this design for:<br>
-              1. Single points of failure<br>
-              2. Scalability bottlenecks at 10x current load<br>
-              3. Data consistency issues<br>
-              4. Missing edge cases<br>
-              5. Security considerations<br><br>
-              Format: One section per concern. Rate severity (High / Medium / Low). Suggest fixes.
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card">
-          <div class="template-header" onclick="toggleTemplate(this)">
-            <div class="template-title">
-              📋 PRD Writing
-              <span class="template-badge">Product</span>
-            </div>
-            <span class="template-chevron open">▼</span>
-          </div>
-          <div class="template-body open">
-            <div class="prompt-box">
-              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
-              Write a concise PRD for the following feature:<br><br>
-              Feature: <span class="placeholder">[Feature name]</span><br>
-              Context: <span class="placeholder">[Product/business context]</span><br>
-              Users: <span class="placeholder">[Who uses this]</span><br><br>
-              Include:<br>
-              - Problem Statement (2-3 sentences)<br>
-              - Success Metrics (3-5 measurable KPIs)<br>
-              - User Stories (3-5, in "As a... I want... So that..." format)<br>
-              - Scope: In / Out of Scope<br>
-              - Edge Cases &amp; Failure Scenarios<br>
-              - Open Questions<br><br>
-              Tone: Engineering-PM friendly. Skip fluff.
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card">
-          <div class="template-header" onclick="toggleTemplate(this)">
-            <div class="template-title">
-              🐛 Root Cause Analysis
-              <span class="template-badge">Debugging</span>
-            </div>
-            <span class="template-chevron open">▼</span>
-          </div>
-          <div class="template-body open">
-            <div class="prompt-box">
-              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
-              Help me diagnose this production issue.<br><br>
-              Symptoms: <span class="placeholder">[What users/monitors are seeing]</span><br>
-              Error logs: <span class="placeholder">[Paste relevant logs]</span><br>
-              System: <span class="placeholder">[Tech stack and architecture context]</span><br>
-              When it started: <span class="placeholder">[Timeline]</span><br><br>
-              Provide:<br>
-              1. Most likely root causes (ranked by probability)<br>
-              2. How to verify each hypothesis<br>
-              3. Immediate mitigation steps<br>
-              4. Long-term fix recommendations<br><br>
-              Be direct. If you're uncertain, say so explicitly.
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card">
-          <div class="template-header" onclick="toggleTemplate(this)">
-            <div class="template-title">
-              📧 Stakeholder Communication
-              <span class="template-badge">Writing</span>
-            </div>
-            <span class="template-chevron open">▼</span>
-          </div>
-          <div class="template-body open">
-            <div class="prompt-box">
-              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
-              Write an email to <span class="placeholder">[stakeholder role]</span> about:<br><br>
-              Situation: <span class="placeholder">[What happened or what you need]</span><br>
-              My role: <span class="placeholder">[Your position]</span><br>
-              Their concern: <span class="placeholder">[What they care about most]</span><br>
-              Desired outcome: <span class="placeholder">[What you want from this email]</span><br><br>
-              Tone: Professional but direct. Not too formal. No corporate jargon.<br>
-              Length: Medium — enough to be clear, short enough to be read.<br>
-              Structure: Context → Key point → Action needed.
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card">
-          <div class="template-header" onclick="toggleTemplate(this)">
-            <div class="template-title">
-              ⚖️ Technical Trade-off Analysis
-              <span class="template-badge">Architecture</span>
-            </div>
-            <span class="template-chevron open">▼</span>
-          </div>
-          <div class="template-body open">
-            <div class="prompt-box">
-              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
-              I'm deciding between these approaches for <span class="placeholder">[problem]</span>:<br><br>
-              Option A: <span class="placeholder">[Approach A]</span><br>
-              Option B: <span class="placeholder">[Approach B]</span><br>
-              Option C (optional): <span class="placeholder">[Approach C]</span><br><br>
-              Context: <span class="placeholder">[Scale, team size, timeline, constraints]</span><br><br>
-              Analyze each option for:<br>
-              - Performance at scale<br>
-              - Implementation complexity<br>
-              - Operational overhead<br>
-              - Cost implications<br>
-              - Risk factors<br><br>
-              End with a clear recommendation and reasoning. Don't hedge — give a definitive answer.
-            </div>
-          </div>
-        </div>
-
-        <div class="template-card">
-          <div class="template-header" onclick="toggleTemplate(this)">
-            <div class="template-title">
-              🔁 API / Flow Design
-              <span class="template-badge">Backend</span>
-            </div>
-            <span class="template-chevron open">▼</span>
-          </div>
-          <div class="template-body open">
-            <div class="prompt-box">
-              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
-              Design the API and backend flow for: <span class="placeholder">[Feature/system name]</span><br><br>
-              Context: <span class="placeholder">[App type, user actions, expected load]</span><br><br>
-              Include:<br>
-              1. Step-by-step flow (happy path first)<br>
-              2. API endpoints: method, URL, request/response schema<br>
-              3. Database operations at each step<br>
-              4. Error cases and how to handle them<br>
-              5. Idempotency considerations<br>
-              6. Rate limiting and security concerns<br><br>
-              Use a numbered list for the flow. Use tables for API contracts.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ══ LEVELS ══ -->
-    <section id="s-levels" class="section">
-      <div class="section-header">
-        <div class="section-tag">Skill Progression</div>
-        <h1 class="section-title">Learning Path</h1>
-        <p class="section-desc">A structured progression from first-time user to expert practitioner.</p>
-      </div>
-
-      <div class="level-grid">
-        <div class="level-card beginner">
-          <div class="level-label">Level 01 — Foundations</div>
-          <h3>Beginner</h3>
-          <ul class="level-list">
-            <li>Understand how Claude reads and processes prompts</li>
-            <li>Control output length, tone, and format</li>
-            <li>Give clear roles and context in each prompt</li>
-            <li>Ask follow-up questions to refine answers</li>
-            <li>Identify when output quality is low or hallucinated</li>
-          </ul>
-        </div>
-        <div class="level-card intermediate">
-          <div class="level-label">Level 02 — Applied Usage</div>
-          <h3>Intermediate</h3>
-          <ul class="level-list">
-            <li>Use chain-of-thought for complex reasoning tasks</li>
-            <li>Build reusable prompt templates</li>
-            <li>Design multi-step workflows with Claude</li>
-            <li>Debug and validate Claude's outputs critically</li>
-            <li>Use XML tags to structure complex prompts</li>
-            <li>Apply few-shot prompting for consistent style</li>
-          </ul>
-        </div>
-        <div class="level-card advanced">
-          <div class="level-label">Level 03 — Expert</div>
-          <h3>Advanced</h3>
-          <ul class="level-list">
-            <li>Simulate real-world system stress tests</li>
-            <li>Build Claude into multi-step reasoning pipelines</li>
-            <li>Use Claude via API for automated workflows</li>
-            <li>Combine Claude with tools (search, code exec)</li>
-            <li>Maintain a personal prompt playbook</li>
-            <li>Optimize prompts for consistency and accuracy</li>
-          </ul>
-        </div>
-      </div>
-
-      <h2 class="sub">Claude Sonnet vs Opus — When to Use Which</h2>
-      <table class="comparison-table">
-        <thead>
-          <tr><th>Use Case</th><th>Sonnet 4.6</th><th>Opus 4.6</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Quick answers &amp; drafts</td>
-            <td><span class="badge-good">Ideal</span></td>
-            <td>Overkill</td>
-          </tr>
-          <tr>
-            <td>Complex system design</td>
-            <td>Good</td>
-            <td><span class="badge-good">Ideal</span></td>
-          </tr>
-          <tr>
-            <td>Long document writing</td>
-            <td><span class="badge-good">Ideal</span></td>
-            <td>Good</td>
-          </tr>
-          <tr>
-            <td>Multi-step reasoning</td>
-            <td>Good</td>
-            <td><span class="badge-good">Ideal</span></td>
-          </tr>
-          <tr>
-            <td>Code generation</td>
-            <td><span class="badge-good">Ideal</span></td>
-            <td>Good</td>
-          </tr>
-          <tr>
-            <td>Cost-sensitive automation</td>
-            <td><span class="badge-good">Ideal</span></td>
-            <td><span class="badge-warn">Expensive</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- ══ UPDATES ══ -->
-    <section id="s-updates" class="section">
-      <div class="section-header">
-        <div class="section-tag">Stay Current</div>
-        <h1 class="section-title">Latest Updates</h1>
-        <p class="section-desc">Key Claude improvements and new capabilities — tracked for practitioners.</p>
-      </div>
-
-      <div class="highlight">
-        <span class="highlight-icon">📡</span>
-        <div class="highlight-text">
-          <h4>Track Official Updates</h4>
-          <p>For real-time updates, always check <a href="https://docs.anthropic.com/" style="color: var(--accent);">docs.anthropic.com</a> and the <a href="https://www.anthropic.com/news" style="color: var(--accent);">Anthropic news page</a>. This section captures highlights for practitioners.</p>
-        </div>
-      </div>
-
-      <div class="update-timeline">
-        <div class="update-item new">
-          <div class="update-date">April 2026</div>
-          <div class="update-title">Claude 4.6 Family Released <span class="new-badge">New</span></div>
-          <div class="update-desc">Claude Sonnet 4.6 and Opus 4.6 are the current flagship models. Sonnet 4.6 is the go-to for everyday intelligent tasks — fast, accurate, cost-efficient. Opus 4.6 excels at complex, multi-step reasoning.</div>
-        </div>
-        <div class="update-item new">
-          <div class="update-date">2025–2026</div>
-          <div class="update-title">Extended Context Window <span class="new-badge">Major</span></div>
-          <div class="update-desc">Claude now supports significantly larger context windows, enabling full codebase reviews, long document analysis, and multi-document synthesis without context fragmentation. This changes how you design prompts for long-running workflows.</div>
-        </div>
-        <div class="update-item">
-          <div class="update-date">2025</div>
-          <div class="update-title">Claude Code — Agentic CLI Tool</div>
-          <div class="update-desc">Claude Code is a command-line agentic coding tool that integrates Claude directly into development workflows. Supports MCP (Model Context Protocol) server integration for connecting to external services like GitHub, Jira, Slack.</div>
-        </div>
-        <div class="update-item">
-          <div class="update-date">2025</div>
-          <div class="update-title">Tool Use &amp; MCP Integration</div>
-          <div class="update-desc">Claude can now connect to and use tools via MCP — Google Drive, Gmail, Calendar, Slack, and custom tools. This enables persistent memory-like workflows and real integration with your existing systems.</div>
-        </div>
-        <div class="update-item">
-          <div class="update-date">2025</div>
-          <div class="update-title">Projects Feature (claude.ai)</div>
-          <div class="update-desc">Projects allow you to give Claude persistent context across conversations — upload docs, set system-level instructions, and maintain continuity. This is the closest thing to a "memory" for Claude in the UI.</div>
-        </div>
-        <div class="update-item">
-          <div class="update-date">2025</div>
-          <div class="update-title">Computer Use Capability</div>
-          <div class="update-desc">Claude can now interact with desktop UIs — click, type, navigate applications. Currently in beta/experimental. Key use case: automating file operations, form-filling, and multi-app workflows without APIs.</div>
-        </div>
-        <div class="update-item">
-          <div class="update-date">2024</div>
-          <div class="update-title">Claude Haiku — Fast &amp; Lightweight</div>
-          <div class="update-desc">Haiku models (now Haiku 4.5) are optimized for speed and cost. Best for high-volume, simple tasks: classification, summaries, quick Q&amp;A. Not for complex reasoning or long-form generation.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ RESOURCES ══ -->
-    <section id="s-resources" class="section">
-      <div class="section-header">
-        <div class="section-tag">Official &amp; Curated</div>
-        <h1 class="section-title">Docs &amp; Resources</h1>
-        <p class="section-desc">The best places to learn, reference, and stay current with Claude.</p>
-      </div>
-
-      <h2 class="sub">Official Anthropic Docs</h2>
-      <div class="resource-grid">
-        <a href="https://docs.anthropic.com/" class="resource-link" target="_blank">
-          <span class="resource-link-icon">📘</span>
-          <div class="resource-link-content">
-            <h4>Anthropic Docs</h4>
-            <p>Full API reference &amp; guides</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" class="resource-link" target="_blank">
-          <span class="resource-link-icon">✍</span>
-          <div class="resource-link-content">
-            <h4>Prompt Engineering</h4>
-            <p>Official prompting techniques</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://support.claude.ai/" class="resource-link" target="_blank">
-          <span class="resource-link-icon">💬</span>
-          <div class="resource-link-content">
-            <h4>Support &amp; FAQ</h4>
-            <p>Features, plans, limits</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://www.anthropic.com/news" class="resource-link" target="_blank">
-          <span class="resource-link-icon">📰</span>
-          <div class="resource-link-content">
-            <h4>Anthropic News</h4>
-            <p>New releases &amp; updates</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://docs.anthropic.com/en/api/getting-started" class="resource-link" target="_blank">
-          <span class="resource-link-icon">⚙</span>
-          <div class="resource-link-content">
-            <h4>API Reference</h4>
-            <p>Endpoints, models, schemas</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://console.anthropic.com/" class="resource-link" target="_blank">
-          <span class="resource-link-icon">🖥</span>
-          <div class="resource-link-content">
-            <h4>Anthropic Console</h4>
-            <p>API access &amp; playground</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-      </div>
-
-      <hr class="divider">
-
-      <h2 class="sub">Prompt Engineering Deep Dives</h2>
-      <div class="resource-grid">
-        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought" class="resource-link" target="_blank">
-          <span class="resource-link-icon">🔗</span>
-          <div class="resource-link-content">
-            <h4>Chain-of-Thought</h4>
-            <p>Step-by-step reasoning guide</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags" class="resource-link" target="_blank">
-          <span class="resource-link-icon">🏷</span>
-          <div class="resource-link-content">
-            <h4>XML Tags</h4>
-            <p>Structure complex prompts</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/multishot-prompting" class="resource-link" target="_blank">
-          <span class="resource-link-icon">🎯</span>
-          <div class="resource-link-content">
-            <h4>Few-Shot (Multishot)</h4>
-            <p>Examples to shape output</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts" class="resource-link" target="_blank">
-          <span class="resource-link-icon">⚡</span>
-          <div class="resource-link-content">
-            <h4>System Prompts</h4>
-            <p>Set persistent behavior</p>
-          </div>
-          <span class="resource-arrow">→</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ══ ANTI-PATTERNS ══ -->
-    <section id="s-antipatterns" class="section">
-      <div class="section-header">
-        <div class="section-tag">Common Mistakes</div>
-        <h1 class="section-title">Anti-Patterns to Avoid</h1>
-        <p class="section-desc">The habits that consistently produce weak, unreliable outputs.</p>
-      </div>
-
-      <div class="highlight warn">
-        <span class="highlight-icon">⚠</span>
-        <div class="highlight-text">
-          <h4>Why Anti-Patterns Matter</h4>
-          <p>Most users plateau at 60-70% output quality because of a small set of repeatable mistakes. Eliminating these doubles your output quality with zero extra effort.</p>
-        </div>
-      </div>
-
-      <div class="tips-list">
-        <div class="tip">
-          <div class="tip-num" style="color: var(--coral);">✗</div>
-          <div class="tip-content">
-            <h4>Vague, Open-Ended Prompts</h4>
-            <p>"Tell me about payments" → Claude gives you a Wikipedia-level overview. Always specify: what aspect, what depth, what format, for what purpose. Vague prompts get generic answers.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num" style="color: var(--coral);">✗</div>
-          <div class="tip-content">
-            <h4>Trusting Without Verification</h4>
-            <p>Claude is confident even when wrong. Never ship code, data, or decisions based solely on Claude's output for critical use cases. Always validate technical facts, especially around APIs, regulations, and numbers.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num" style="color: var(--coral);">✗</div>
-          <div class="tip-content">
-            <h4>Treating Each Session as Isolated</h4>
-            <p>Claude has no memory between chats. Jumping into a new session without context means starting from zero. Always re-establish role, context, and constraints — or use Projects to persist context across sessions.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num" style="color: var(--coral);">✗</div>
-          <div class="tip-content">
-            <h4>One-and-Done Prompting</h4>
-            <p>Accepting the first response as final. Real value comes from iteration: push back, ask for alternatives, challenge assumptions, and request deeper reasoning. First responses are drafts.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num" style="color: var(--coral);">✗</div>
-          <div class="tip-content">
-            <h4>Overloading One Prompt</h4>
-            <p>Stuffing 5 different questions into one message. Claude tries to address all of them superficially. Break complex requests into logical steps. One clear goal per interaction unit.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num" style="color: var(--coral);">✗</div>
-          <div class="tip-content">
-            <h4>Not Asking for Edge Cases</h4>
-            <p>Claude will give you the happy path unless explicitly asked for failure modes. For any design or plan, always add: <code>What could go wrong? What edge cases am I missing?</code></p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num" style="color: var(--coral);">✗</div>
-          <div class="tip-content">
-            <h4>Accepting "It Depends" Without Drilling Down</h4>
-            <p>When Claude says "it depends on your use case," don't stop there. Push: <code>Given my context is X and Y, which approach would you recommend and why?</code> Force a concrete recommendation.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ PLAYBOOK ══ -->
-    <section id="s-playbook" class="section">
-      <div class="section-header">
-        <div class="section-tag">Personal System</div>
-        <h1 class="section-title">Your Claude Playbook</h1>
-        <p class="section-desc">Build and maintain this as a living document. Review and update as you learn.</p>
-      </div>
-
-      <h2 class="sub">Playbook Structure</h2>
-      <div class="card-grid">
-        <div class="card" style="--card-accent: var(--teal); --icon-bg: var(--teal2);">
-          <div class="card-icon">📁</div>
-          <h3>Prompt Library</h3>
-          <p>Save your best prompts by domain — backend, product, writing. Tag by type: system design, debugging, PRD, etc. Each should be parameterized with placeholders.</p>
-          <span class="card-tag">Templates</span>
-        </div>
-        <div class="card" style="--card-accent: var(--accent); --icon-bg: var(--accent-glow);">
-          <div class="card-icon">🧠</div>
-          <h3>Decision Log</h3>
-          <p>Track decisions Claude helped you make. Include: the prompt, the output, what you changed, and outcome. Learn from the delta between Claude's answer and reality.</p>
-          <span class="card-tag">Learning</span>
-        </div>
-        <div class="card" style="--card-accent: var(--gold); --icon-bg: var(--gold2);">
-          <div class="card-icon">⚡</div>
-          <h3>Quick Patterns</h3>
-          <p>Short, reusable patterns you use constantly: <code>Think step by step</code>, <code>Flag uncertainty</code>, <code>Give 3 options with trade-offs</code>. Keep these front of mind.</p>
-          <span class="card-tag">Patterns</span>
-        </div>
-        <div class="card" style="--card-accent: var(--coral); --icon-bg: var(--coral2);">
-          <div class="card-icon">🚫</div>
-          <h3>Known Limitations</h3>
-          <p>Track where Claude consistently fails or hallucinate for your domain. Build verification checklists for those areas. Know when NOT to trust Claude.</p>
-          <span class="card-tag">Reliability</span>
-        </div>
-      </div>
-
-      <h2 class="sub">Guiding Principles</h2>
-      <div class="tips-list">
-        <div class="tip">
-          <div class="tip-num">P1</div>
-          <div class="tip-content">
-            <h4>Claude is a Thinking Partner, Not an Oracle</h4>
-            <p>Use Claude to expand your thinking, explore options, and stress-test ideas — not to get definitive answers you'll act on blindly. The best outputs come from real collaboration.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">P2</div>
-          <div class="tip-content">
-            <h4>Clarity Over Complexity</h4>
-            <p>Simple, clear prompts beat elaborate, clever prompts. If your prompt is confusing, Claude's answer will be too. Write prompts the way you'd brief a smart colleague.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">P3</div>
-          <div class="tip-content">
-            <h4>Always Validate Critical Outputs</h4>
-            <p>For anything that goes into production, a proposal, or a decision — independently verify. Claude's confidence does not correlate with correctness for edge cases and recent facts.</p>
-          </div>
-        </div>
-        <div class="tip">
-          <div class="tip-num">P4</div>
-          <div class="tip-content">
-            <h4>Focus on Consistency and Repeatability</h4>
-            <p>The mark of expertise is getting good outputs reliably — not occasionally. Build and refine templates so the quality is consistent across use cases, not prompt-by-prompt luck.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-</div>
+</main>
+</div><!-- end .app -->
 
 <script>
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.querySelectorAll('.sidebar-link').forEach(s => s.classList.remove('active'));
+/* ════ DATA: PROMPTS ════ */
+const PROMPTS=[
+{id:'b1',cat:'Backend',icon:'🏗',title:'System Design Review',isNew:false,prompt:'You are a senior backend engineer reviewing a system design.\n\n<design>\n[PASTE YOUR DESIGN]\n</design>\n\nReview for:\n1. Single points of failure\n2. Scalability bottlenecks at 10x load\n3. Data consistency issues\n4. Missing edge cases and failure modes\n5. Security considerations\n\nFormat: One section per concern. Severity: High/Medium/Low. Specific fix for each.'},
+{id:'b2',cat:'Backend',icon:'🔁',title:'API Flow Design',isNew:false,prompt:'Design the full backend flow for: [FEATURE NAME]\n\nContext: [App type, user actions, expected load/day]\n\nInclude:\n1. Step-by-step flow (happy path, then failure paths)\n2. API endpoints: method, URL, request body, response schema\n3. Database operations at each step\n4. Idempotency strategy\n5. Error handling per failure mode\n6. Rate limiting and auth\n\nUse numbered steps. Use tables for API contracts.'},
+{id:'b3',cat:'Backend',icon:'💳',title:'Payment Flow Design',isNew:false,prompt:'Design a payment processing flow for: [PAYMENT USE CASE]\n\nProvider: [Stripe/Razorpay/etc]\nScale: [Transactions/day]\n\nInclude:\n- Full transaction lifecycle with state machine\n- Webhook handling with idempotency\n- Failure scenarios: declined, timeout, partial capture\n- Refund/reversal flow\n- Reconciliation strategy\n- Audit trail requirements'},
+{id:'b4',cat:'Backend',icon:'🔄',title:'Idempotency Pattern',isNew:false,prompt:'Implement idempotency for [OPERATION] in [SYSTEM].\n\nExplain:\n1. Where to generate and store keys\n2. Full request-response lifecycle\n3. Retry logic with exact DB queries\n4. Key expiry strategy\n5. Concurrent request edge case\n6. How Stripe implements this (reference)\n\nGive production-ready pseudocode for the middleware.'},
+{id:'b5',cat:'Backend',icon:'📊',title:'Database Schema Design',isNew:false,prompt:'Design a database schema for: [SYSTEM/FEATURE]\n\nEntities: [Key data entities]\nRelationships: [Key relationships]\nScale: [Rows per table per month]\nRead/write ratio: [e.g. 80% reads]\n\nProvide:\n1. Table definitions with column types and constraints\n2. Index strategy with reasoning per index\n3. Partitioning if needed\n4. N+1 query traps to avoid\n\nUse PostgreSQL syntax.'},
+{id:'b6',cat:'Backend',icon:'⚡',title:'Performance Analysis',isNew:false,prompt:'Our [SERVICE] has performance issues:\n\nSymptoms: [What is slow]\nStack: [Tech stack, DB, caching layer]\nLoad: [Requests/second]\nAPM data: [Paste metrics if available]\n\nAnalyze:\n1. Most likely bottlenecks ranked by probability and impact\n2. How to diagnose each one specifically\n3. Quick wins (under 1 day)\n4. Medium-term fixes (under 1 week)\n5. Architectural changes if needed\n\nBe specific. No generic advice.'},
+{id:'b7',cat:'Backend',icon:'🔐',title:'Auth System Design',isNew:true,prompt:'Design auth and authorization for: [APP TYPE]\n\nUser types: [e.g. admin, business, end user]\nAuth methods: [email/pass, OAuth, OTP, SSO]\nSession preference: [Stateless JWT vs stateful]\n\nProvide:\n1. Full auth flow (login, logout, token refresh)\n2. JWT vs session trade-off for this use case\n3. Refresh token rotation strategy\n4. Permission and role model design\n5. Security: rate limiting, brute force, CSRF\n6. Token revocation approach'},
+{id:'p1',cat:'Product',icon:'📋',title:'PRD Writing',isNew:false,prompt:'Write a PRD for:\n\nFeature: [FEATURE NAME]\nProduct context: [What your product does]\nProblem: [User pain you are solving]\n\nStructure:\n1. Problem Statement (3 sentences max)\n2. Success Metrics (3-5 KPIs with targets)\n3. User Stories (4-6 in As a / I want / So that format)\n4. Scope: explicitly In-Scope and Out-of-Scope\n5. Edge Cases and Failure Scenarios\n6. Open Questions for engineering\n\nTone: Engineering-PM friendly. No fluff. Be specific.'},
+{id:'p2',cat:'Product',icon:'⚖️',title:'Trade-off Analysis',isNew:false,prompt:'Deciding between approaches for [PROBLEM]:\n\nOption A: [Description]\nOption B: [Description]\nOption C: [Optional]\n\nContext: [Scale, team size, timeline, constraints]\nPrimary constraint: [Speed/cost/quality/scalability]\n\nAnalyze each for:\n- Performance at scale\n- Implementation complexity\n- Operational overhead\n- Cost\n- Risk and reversibility\n\nEnd with a definitive recommendation for my context. No hedging.'},
+{id:'p3',cat:'Product',icon:'🗺',title:'Product Strategy',isNew:false,prompt:'Develop a product strategy for [PRODUCT/FEATURE]:\n\nCurrent state: [Where we are]\nTarget: [Where we want to be in 6-12 months]\nConstraints: [Team, budget, timeline]\nCompetition: [Key competitors]\n\nProvide:\n1. Strategic positioning\n2. Three strategic bets to validate\n3. Prioritized roadmap with reasoning\n4. Success metrics and measurement\n5. Biggest risks and mitigation\n\nFormat as a strategy memo. Be opinionated.'},
+{id:'p4',cat:'Product',icon:'🔢',title:'RICE Prioritization',isNew:false,prompt:'Prioritize these features:\n\n[LIST YOUR ITEMS]\n\nContext:\n- User segment: [Who we build for]\n- Business objective: [This quarter OKR]\n- Engineering capacity: [Team size, sprints]\n\nScore each using RICE:\n- Reach (users per quarter)\n- Impact (0.25 to 3)\n- Confidence (percentage)\n- Effort (person-weeks)\n\nGive a ranked list with top 3 picks and clear reasoning.'},
+{id:'p5',cat:'Product',icon:'📊',title:'Metrics and KPI Design',isNew:true,prompt:'Design a metrics framework for [PRODUCT/FEATURE]:\n\nProduct: [What it does, who uses it]\nBusiness model: [How you make money]\nStage: [Early/scaling/mature]\n\nProvide:\n1. North Star Metric with definition and measurement\n2. Input metrics (3-5 that drive the North Star)\n3. Health metrics (guardrails)\n4. Leading vs lagging indicators\n5. Dashboard structure\n6. Common pitfalls with this metric set\n\nExplain reasoning for each choice.'},
+{id:'d1',cat:'Debugging',icon:'🐛',title:'Root Cause Analysis',isNew:false,prompt:'Debug this production issue:\n\nSymptoms: [What users and monitors see]\nLogs:\n```\n[PASTE RELEVANT LOGS]\n```\nStack: [Tech stack, architecture]\nTimeline: [When it started, any recent deployments]\nFrequency: [Constant/intermittent/load-triggered]\n\nProvide:\n1. Root causes ranked by probability\n2. How to verify each hypothesis with specific commands\n3. Immediate mitigation\n4. Long-term fix\n5. Prevention strategy\n\nFlag uncertainty explicitly.'},
+{id:'d2',cat:'Debugging',icon:'🔍',title:'Code Review',isNew:false,prompt:'Review this code:\n\n```[LANGUAGE]\n[PASTE CODE]\n```\n\nContext: [What this does, where it runs]\n\nCheck for:\n1. Logic bugs and edge cases\n2. Performance issues (N+1, memory leaks)\n3. Security vulnerabilities\n4. Error handling gaps\n5. Race conditions\n6. Code smell and maintainability\n\nFormat: Location | Severity | Problem | Fix'},
+{id:'d3',cat:'Debugging',icon:'💥',title:'Postmortem Writing',isNew:false,prompt:'Write a postmortem for:\n\nWhat happened: [Description]\nTimeline:\n- [HH:MM] [Event]\n- [HH:MM] [Event]\nImpact: [Users, duration, business impact]\nRoot cause: [If known]\n\nWrite with:\n1. Executive summary (3 sentences)\n2. Full timeline\n3. Root cause using 5 Whys\n4. Contributing factors\n5. What went well\n6. Action items with owners and deadlines\n\nTone: Blameless. Focus on systems not people.'},
+{id:'d4',cat:'Debugging',icon:'🏎',title:'Query Optimization',isNew:false,prompt:'Optimize this slow query:\n\n```sql\n[PASTE QUERY]\n```\n\nContext:\n- Table sizes: [approx rows]\n- Execution time: [current ms]\n- Existing indexes: [list them]\n- Database: [PostgreSQL/MySQL]\n\nProvide:\n1. Why it is slow (specific reason)\n2. Optimized query with explanation\n3. Index recommendations with CREATE INDEX statements\n4. Expected improvement\n5. How to verify with EXPLAIN ANALYZE'},
+{id:'w1',cat:'Writing',icon:'📧',title:'Stakeholder Email',isNew:false,prompt:'Write an email to [STAKEHOLDER ROLE] about:\n\nSituation: [What happened or what you need]\nMy role: [Your position]\nTheir concern: [What they care about most]\nDesired outcome: [What you want from this email]\nTone needed: [Urgent/informational/asking/bad news]\n\nRequirements:\n- Professional but natural, not corporate-stiff\n- Clear subject line\n- Structure: Context, Key point, Action needed\n- Max 200 words in body\n\nWrite 2 versions: direct and diplomatic.'},
+{id:'w2',cat:'Writing',icon:'📄',title:'Technical Documentation',isNew:false,prompt:'Write technical docs for: [SYSTEM/API/FEATURE]\n\nAudience: [New engineers/external devs/ops team]\nContext they have: [What they already know]\n\nInclude:\n1. Overview (what it does and why it exists)\n2. Architecture description\n3. Setup and installation steps\n4. API reference with code examples\n5. Common issues and troubleshooting\n6. FAQs\n\nStyle: Clear, precise, no jargon. Every step numbered. Code in code blocks.'},
+{id:'w3',cat:'Writing',icon:'📢',title:'Launch Announcement',isNew:false,prompt:'Write a [CHANNEL: Slack/blog/LinkedIn] announcement for:\n\nWhat we launch: [Feature or product name]\nKey benefit: [Main user value]\nWho it is for: [User segment]\nWhen: [Date and time]\nHow to access: [Steps or link]\n\nTone: [Excited/professional/conversational]\nLength: [Short 100w / medium 300w / long post]\n\nWrite it ready to post. Include a strong opening hook.'},
+{id:'w4',cat:'Writing',icon:'🎯',title:'Executive Summary',isNew:false,prompt:'Write an executive summary of: [TOPIC]\n\nAudience: [C-suite/board/senior leadership]\n\n[PASTE FULL CONTENT HERE]\n\nRequirements:\n- Max 300 words\n- Start with key takeaway or decision needed\n- Cover: situation, findings, recommendation, next steps\n- No jargon, no passive voice\n- Actionable: tell them what to decide or do'},
+{id:'s1',cat:'Strategy',icon:'📈',title:'Growth Strategy',isNew:false,prompt:'Develop a growth strategy for [PRODUCT]:\n\nCurrent state:\n- Users: [Number]\n- Main acquisition channels: [Current channels]\n- Key metrics: [Current numbers]\n\nGoal: [Target in 6-12 months]\nConstraints: [Budget, team, tech]\n\nProvide:\n1. Growth model using AARRR framework\n2. Highest-leverage levers for this stage\n3. Three experiments for next 30 days with metrics\n4. Risks and key assumptions\n\nSpecific to our stage and model. No generic advice.'},
+{id:'s2',cat:'Strategy',icon:'🏆',title:'Competitive Analysis',isNew:false,prompt:'Analyze competitive landscape for [PRODUCT CATEGORY]:\n\nOur product: [Description]\nOur target users: [Who we serve]\nCompetitors: [Name 3-5]\n\nFor each competitor:\n1. Core value proposition\n2. Target segment\n3. Key strengths\n4. Key weaknesses\n5. Pricing model\n6. Recent moves\n\nThen:\n- Whitespace we can own\n- Recommended positioning\n- Biggest competitive threat to flag\n\nFormat as a competitive intelligence brief.'},
+{id:'ar1',cat:'Architecture',icon:'🏛',title:'Microservices Design',isNew:false,prompt:'Design microservices architecture for: [SYSTEM]\n\nCurrent state: [Monolith/existing/greenfield]\nScale: [Users, transactions/day]\nTeam: [Number of teams]\n\nDesign:\n1. Service decomposition and clear boundaries\n2. Communication: sync vs async with reasoning\n3. Data ownership per service\n4. Service discovery and load balancing\n5. Observability: logging, metrics, tracing\n6. Deployment strategy\n7. When NOT to split (anti-pattern warning)\n\nExplain trade-offs vs modular monolith for this scale.'},
+{id:'ar2',cat:'Architecture',icon:'📨',title:'Event-Driven Architecture',isNew:false,prompt:'Design event-driven architecture for: [USE CASE]\n\nKey events: [List domain events]\nProducers: [Systems generating events]\nConsumers: [Systems reacting to events]\nBroker: [Kafka/RabbitMQ/SQS or recommend one]\n\nDesign:\n1. Event schema with example JSON\n2. Topic and queue structure\n3. Consumer group strategy\n4. Error handling: DLQ, retries, idempotency\n5. Ordering guarantees and how to achieve them\n6. Monitoring the event pipeline\n\nFlag: what happens if a consumer is down for 2 hours?'},
+{id:'ar3',cat:'Architecture',icon:'🔧',title:'Caching Strategy',isNew:true,prompt:'Design caching strategy for: [SYSTEM/API]\n\nPain point: [What is slow or overloaded]\nRead/write ratio: [e.g. 90/10]\nData characteristics: [How often does it change? Personalized?]\nCurrent stack: [Redis/Memcached/CDN]\n\nProvide:\n1. What to cache vs NOT cache with reasoning\n2. Cache-aside vs read-through vs write-through decision\n3. TTL strategy per data type\n4. Cache invalidation approach\n5. Cache stampede prevention\n6. Monitoring cache hit rate\n\nGive me a decision tree: should I cache this?'},
+{id:'cl1',cat:'Claude Advanced',icon:'🤖',title:'System Prompt Design',isNew:true,prompt:'Design a system prompt for a Claude-powered assistant for: [USE CASE]\n\nPurpose: [What it does]\nUsers: [Who uses it]\nConstraints: [What it should never do]\nTone: [Professional/friendly/technical]\n\nWrite a production-ready system prompt that:\n1. Defines role and persona clearly\n2. Sets output format expectations\n3. Handles edge cases and refusals gracefully\n4. Includes examples of ideal responses\n5. Has escalation paths for out-of-scope queries\n\nAlso write 3 test prompts to validate it works.'},
+{id:'cl2',cat:'Claude Advanced',icon:'⛓',title:'Multi-Step Chain',isNew:true,prompt:'Design a multi-step Claude reasoning chain for: [COMPLEX TASK]\n\nGoal: [Final output needed]\nInput: [Available data and context]\nConstraints: [Time, token limits, accuracy requirements]\n\nDesign:\n1. Sub-task breakdown\n2. Prompt for each step\n3. How step N output feeds into step N+1\n4. Error handling if a step fails\n5. Final output validation approach\n\nWrite the actual prompt for each step, ready to use.'},
+{id:'cl3',cat:'Claude Advanced',icon:'🧪',title:'Prompt Evaluation',isNew:true,prompt:'Evaluate and improve this prompt:\n\nOriginal prompt:\n[PASTE YOUR PROMPT]\n\nExpected output: [What you want]\nActual problem: [What Claude does wrong]\n\nAnalyze:\n1. Root cause of the gap (ambiguity, missing context, format issue)\n2. Specific improvements with explanation for each\n3. Rewritten improved prompt\n4. Three test cases to validate the improvement\n5. Common failure modes to watch for\n\nBe surgical. Do not just make it longer, make it more precise.'},
+{id:'cl4',cat:'Claude Advanced',icon:'🗂',title:'Projects Setup Guide',isNew:true,prompt:'Help me set up a Claude Project for: [YOUR WORKFLOW]\n\nI want Claude to always:\n- Know: [Your role, company context, tech stack]\n- Output in: [Your preferred format and style]\n- Never: [Your hard constraints]\n\nWrite:\n1. Ideal project instructions as a system prompt\n2. Which documents to upload and why\n3. Starter prompt template for each session\n4. How to structure conversations for maximum context efficiency\n\nMake this specific and actionable, not generic.'},
+{id:'ft1',cat:'Fintech',icon:'🏦',title:'Reconciliation System',isNew:false,prompt:'Design a financial reconciliation system for: [CONTEXT]\n\nData sources: [Ledgers and systems to reconcile]\nVolume: [Transactions per day]\nDiscrepancy window: [e.g. T+1 or real-time]\n\nDesign:\n1. Data ingestion pipeline from each source\n2. Matching algorithm: exact, fuzzy, manual review\n3. Discrepancy detection and classification\n4. Exception handling workflow\n5. Audit trail requirements\n6. Reporting and alerting\n\nFlag RBI or PCI-DSS requirements if India-based.'},
+{id:'ft2',cat:'Fintech',icon:'⚠️',title:'Fraud Detection Design',isNew:false,prompt:'Design fraud detection for: [TRANSACTION TYPE]\n\nVolume: [Transactions per day]\nAverage value: [Range]\nCurrent fraud rate: [Percentage if known]\nUser base: [Consumer/business/both]\n\nDesign:\n1. Risk signal categories (velocity, device, behaviour, network)\n2. Rule-based checks with specific thresholds\n3. ML scoring approach if applicable\n4. Decision flow: auto-approve, auto-block, manual review\n5. False positive handling trade-offs\n6. Feedback loop for improvement\n\nInclude top 5 fraud patterns to detect for this use case.'},
+{id:'ft3',cat:'Fintech',icon:'📑',title:'Compliance Checklist',isNew:true,prompt:'Compliance checklist for: [PRODUCT TYPE]\n\nJurisdiction: [India/US/EU]\nRegulator: [RBI/NPCI/FinCEN/FCA]\nBusiness model: [Brief description]\n\nChecklist covering:\n1. Licensing requirements\n2. KYC and AML with specific thresholds\n3. Data localization and privacy requirements\n4. Reporting obligations: frequency and format\n5. User consent requirements\n6. Audit and record retention\n\nNote: Starting framework only. Always verify with a qualified compliance professional.'},
+];
 
-    document.getElementById('s-' + id).classList.add('active');
+/* ════ DATA: UPDATES ════ */
+const UPDATES=[
+{id:'u1',date:'April 2026',dc:'#ff6b6b',badge:'hot',bt:'🔥 Latest',
+ title:'Claude 4.6 — Sonnet and Opus',
+ summary:'Current flagship models. Sonnet 4.6 for everyday tasks, Opus 4.6 for complex multi-step reasoning.',
+ body:'<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:10px;"><strong style="color:var(--tx)">Sonnet 4.6</strong> is the daily driver — fast, accurate, cost-effective. Handles complexity that previously required Opus. <strong style="color:var(--tx)">Opus 4.6</strong> is for multi-step reasoning, long-form analysis, and tasks where quality matters more than speed. API strings: <code>claude-sonnet-4-6</code> and <code>claude-opus-4-6</code>.</p>',
+ demo:'You are a senior product manager at a fintech startup.\n\nThink step by step about designing a payment retry system. Walk through the full failure scenario tree — from initial payment failure through all retry paths to final resolution states. Include edge cases for partial captures and network timeouts. Then give me a text-based state machine.',
+ why:'Sonnet 4.6 now handles the same reasoning quality that previously required Opus 3. Major cost improvement for API-based workflows.',
+ links:[{l:'Release Notes',u:'https://www.anthropic.com/news',i:'📰'},{l:'API Models Docs',u:'https://docs.anthropic.com/en/api/getting-started',i:'⚙'}]},
+{id:'u2',date:'2025-2026',dc:'#7c6ef5',badge:'feature',bt:'✦ Major',
+ title:'Claude Projects — Persistent Context Across Sessions',
+ summary:'Upload documents, set standing instructions, and maintain context that persists across every conversation.',
+ body:'<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:10px;">Projects solve the biggest Claude limitation: no memory between sessions. Upload your PRDs, architecture docs, and company context once. Set a system instruction — it applies to every future conversation in that Project.</p><p style="font-size:13px;color:var(--t2);line-height:1.7;"><strong style="color:var(--tx)">Best use for PMs and engineers:</strong> Create one Project per product area. Upload specs, past decisions, architecture docs. Use it as an always-on technical co-pilot that already knows your context.</p>',
+ demo:'[In a Project with your company docs already uploaded]\n\nBased on our current architecture docs and the payment flow spec, identify the top 3 risks in the upcoming v2 payment redesign. Cross-reference with our past incident patterns.',
+ why:'Single most impactful Claude feature for professional use. Without it you repeat context every session. With it Claude becomes a persistent collaborator.',
+ links:[{l:'Projects Guide',u:'https://support.claude.ai',i:'📘'},{l:'Video Demo',u:'https://www.youtube.com/@anthropic-ai',i:'▶'}]},
+{id:'u3',date:'2025',dc:'#3ecfa0',badge:'new',bt:'★ Feature',
+ title:'Extended Thinking — Deep Reasoning Mode',
+ summary:'Claude shows its full reasoning chain before answering, producing dramatically better outputs on hard problems.',
+ body:'<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:10px;">Extended Thinking gives Claude a scratchpad to reason through complex problems before producing a final answer. The quality difference on multi-step technical problems and trade-off analyses is significant — it catches edge cases and alternatives that standard mode misses.</p><p style="font-size:13px;color:var(--t2);line-height:1.7;"><strong style="color:var(--tx)">When to use it:</strong> Architecture decisions, debugging complex issues, strategic analysis — anywhere depth matters more than speed.</p>',
+ demo:'[Enable extended thinking in claude.ai settings]\n\nWe need to decide between Event Sourcing vs traditional CRUD for our transaction ledger. We process 50k transactions/day, have a 4-person team, and need audit trail compliance. Think through this decision deeply — all trade-offs, our specific constraints, failure modes — then give me a final recommendation I can take to my CTO.',
+ why:'For complex technical and product decisions, extended thinking produces qualitatively different answers — not just more words, but deeper analysis that catches issues standard mode misses.',
+ links:[{l:'Extended Thinking Docs',u:'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/extended-thinking',i:'📘'}]},
+{id:'u4',date:'2025',dc:'#7c6ef5',badge:'feature',bt:'✦ Feature',
+ title:'Claude Code — Agentic CLI Tool',
+ summary:'Runs in your terminal with direct codebase access — reads files, makes multi-file changes, runs tests.',
+ body:'<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:10px;">Claude Code runs in your terminal and has direct access to your filesystem. It reads your entire repo, writes code across multiple files, runs tests, and iterates based on results. Not a suggestion tool — a coding agent.</p><p style="font-size:13px;color:var(--t2);line-height:1.7;"><strong style="color:var(--tx)">Real use cases:</strong> Multi-file refactoring, writing tests for existing code, implementing features from English descriptions, debugging with full codebase context.</p>',
+ demo:'[In terminal after: npm install -g @anthropic-ai/claude-code]\n\nclaude "Review our payment service, find all external HTTP calls without a timeout, and add a 5-second timeout with proper error handling. Show me each change before making it."',
+ why:'Shifts Claude from answering questions about code to actually working on code. The most powerful workflow change for engineering-adjacent roles.',
+ links:[{l:'Claude Code Docs',u:'https://docs.anthropic.com',i:'📘'},{l:'YouTube Demo',u:'https://www.youtube.com/@anthropic-ai',i:'▶'}]},
+{id:'u5',date:'2025',dc:'#3ecfa0',badge:'new',bt:'★ Feature',
+ title:'MCP — Connect Claude to Any Tool',
+ summary:'Open protocol to connect Claude to Gmail, Drive, Slack, databases, and custom APIs natively.',
+ body:'<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:10px;">MCP gives Claude direct access to the real world. Instead of copying data into Claude, you connect Claude to data sources directly. Available connectors: Google Drive, Gmail, Calendar, Slack, GitHub, Jira, Notion, databases, and custom APIs.</p><p style="font-size:13px;color:var(--t2);line-height:1.7;"><strong style="color:var(--tx)">For PMs and engineers:</strong> Connect product docs from Drive, tickets from Jira, discussions from Slack — then ask cross-system questions that would normally take 30 minutes of manual searching.</p>',
+ demo:'[With Google Drive MCP connected in claude.ai]\n\nSearch my Drive for all documents related to the payment redesign project from the last 3 months. Summarize the key decisions made, identify unresolved open questions, and flag any conflicts between documents.',
+ why:'Transforms Claude from a standalone tool into a connected layer across your entire workflow stack. The future of how knowledge workers use AI.',
+ links:[{l:'MCP Documentation',u:'https://docs.anthropic.com/en/docs/build-with-claude/mcp',i:'📘'},{l:'MCP on GitHub',u:'https://github.com/anthropics',i:'⚙'}]},
+{id:'u6',date:'2025',dc:'#e8b84b',badge:'tip',bt:'★ Context Tip',
+ title:'200K Token Context Window — What It Changes',
+ summary:'Paste entire codebases, full product specs, or months of conversation history in one shot.',
+ body:'<p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:10px;">200K tokens changes the unit of work from a snippet to a system. This is not just "more input" — it enables entirely new types of questions: analyze an entire service for inconsistencies, cross-reference specs, review a full architecture for trade-offs.</p>',
+ demo:'[Paste your entire backend service code plus architecture document]\n\nYou now have our full payment service. Identify: (1) code patterns that contradict our documented architecture, (2) functions that have grown beyond single responsibility, (3) error handling inconsistencies across the service.',
+ why:'Changes analysis from pasting files one by one to understanding an entire system in a single context. Enables a new class of architectural questions.',
+ links:[{l:'Context Window Guide',u:'https://docs.anthropic.com',i:'📘'}]},
+{id:'u7',date:'2025',dc:'#5ba4f5',badge:'feature',bt:'✦ Feature',
+ title:'Web Search Integration',
+ summary:'Claude searches the web to combine reasoning with current information — no knowledge cutoff for research tasks.',
+ body:'<p style="font-size:13px;color:var(--t2);line-height:1.7;">Ask questions requiring current information — latest API changes, recent regulations, competitor moves — and get Claude reasoning on top of real-time data, not stale training data.</p>',
+ demo:'Search for the latest RBI payment aggregator guidelines from 2025. Then compare them against our current setup: [describe your setup]. Identify the 3 highest-risk compliance gaps we need to address before our next audit.',
+ why:'Eliminates the biggest trust issue with Claude: outdated information. Critical for compliance, competitive analysis, and any research involving rapidly changing facts.',
+ links:[{l:'Search Tool Docs',u:'https://docs.anthropic.com',i:'📘'}]},
+];
 
-    document.querySelectorAll('.nav-item').forEach(n => {
-      if (n.getAttribute('onclick') && n.getAttribute('onclick').includes(id)) {
-        n.classList.add('active');
-      }
+/* ════ DATA: MUST TRY ════ */
+const MUST_TRY=[
+{icon:'⚡',title:'Chain-of-Thought on Your Real Problem',badge:'High Impact',
+ prompt:'[Take any complex decision you are facing right now]\n\nThink step by step through this before answering. First list all relevant considerations. Then reason through trade-offs. Then give your recommendation with specific reasoning.',
+ why:'The single highest-leverage technique. Do this once on a real problem to immediately feel the quality difference.'},
+{icon:'🎯',title:'Challenge Your Own Design',badge:'Must Try',
+ prompt:'Here is my current design for [SYSTEM]:\n[DESCRIBE IT]\n\nPlay the role of a skeptical senior engineer. What are the 5 biggest weaknesses? What would break first at 10x scale? What assumptions might not hold?',
+ why:'Surfaces blind spots better than any formal review. Use before every major technical or product decision.'},
+{icon:'📋',title:'PRD in 5 Minutes',badge:'Product',
+ prompt:'Write a concise PRD for: [ONE SENTENCE FEATURE DESCRIPTION]\n\nInclude: problem statement, 3 success metrics with targets, 4 user stories, in-scope vs out-of-scope, 3 edge cases. Be specific. No fluff.',
+ why:'Goes from idea to structured spec in minutes. Better structure than most manually written PRDs.'},
+{icon:'🔗',title:'Architecture Stress Test',badge:'Advanced',
+ prompt:'Our system: [DESCRIBE YOUR ARCHITECTURE]\n\nWalk through what breaks as we go from current load to 10x to 100x. At each level: what fails first, why, what would we need to change? Be specific to our actual stack.',
+ why:'Fastest way to find architectural weaknesses before they become production incidents.'},
+{icon:'🤖',title:'Set Up Your First Project',badge:'New Feature',
+ prompt:'[WRITE THIS AS YOUR PROJECT SYSTEM PROMPT IN CLAUDE.AI]\n\nYou are a senior [YOUR ROLE] at [COMPANY]. Our product: [BRIEF DESCRIPTION]. Our tech stack: [STACK]. Always respond with: step-by-step reasoning, edge cases considered, and a clear recommendation. Never give generic advice — tie everything to our specific context.',
+ why:'One-time 10-minute setup that makes every future Claude session dramatically more useful. Do this today.'},
+];
+
+/* ════ DATA: ROADMAP ════ */
+const ROADMAP=[
+{phase:1,color:'phf',ac:'#3ecfa0',name:'Foundations',level:'Beginner',items:[
+  {id:'f1',title:"Understand Claude's memory model",desc:'Claude has no memory between sessions. It only knows what is in the current context window.',practice:"Open a new Claude chat. Ask it what you discussed last time. Observe zero memory. Then start fresh and paste a context summary. Practice front-loading everything Claude needs to know every time.",badges:[]},
+  {id:'f2',title:'Control output length and format',desc:'Claude matches your format unless explicitly directed otherwise.',practice:"Ask the same question 3 ways: (1) no format specified, (2) 'Answer in 3 bullet points', (3) 'Answer in a markdown table with columns X and Y'. Compare all three outputs side by side.",badges:[]},
+  {id:'f3',title:'Role plus Context plus Goal structure',desc:'The core prompt structure that unlocks consistent quality outputs.',practice:"Take any question you would normally ask plainly. Rewrite it: 'You are a [role]. Context: [situation]. I need: [specific task].' Compare quality. Repeat on 5 different topics.",badges:[]},
+  {id:'f4',title:'Iterate with follow-up questions',desc:'Every first response is a draft. Real value comes from iteration.',practice:"Get any response. Then send: 'This is good but too generic. Make it specific to [your actual context].' Do this 3 times on one topic. Watch how depth builds with each turn.",badges:[]},
+  {id:'f5',title:'Identify hallucinated or weak outputs',desc:"Claude is confident even when wrong. Learn to spot the signals.",practice:'Ask Claude about a very specific technical detail in your domain. Then independently verify it. Note what was right, vague, and confidently wrong. Build the verification habit.',badges:[]},
+  {id:'f6',title:'Use negative constraints',desc:'Telling Claude what NOT to do is as powerful as what to do.',practice:"Ask for a solution. Re-ask adding: 'Do not use third-party libraries, do not use recursion, skip the introduction section.' Compare how specific the output becomes.",badges:[]},
+  {id:'f7',title:'Format control mastery',desc:'Build vocabulary for requesting any output structure you need.',practice:"Describe a product flow 5 different ways: plain prose, numbered steps, JSON object, markdown table, bullet points. Study how Claude interprets each request.",badges:[]},
+]},
+{phase:2,color:'phi',ac:'#7c6ef5',name:'Prompt Engineering',level:'Beginner to Intermediate',items:[
+  {id:'p1',title:'Chain-of-Thought prompting',desc:'Force step-by-step reasoning before concluding — dramatically improves accuracy on complex tasks.',practice:"Take a complex decision you are currently facing. Ask Claude directly first. Then re-ask with 'Think step by step through this before answering.' Compare depth, edge case coverage, and recommendation quality.",badges:[]},
+  {id:'p2',title:'XML tag structure for complex prompts',desc:'Separate prompt sections with context, task, and constraints tags.',practice:'Take your longest most complex prompt and restructure it with XML tags. Send both versions to Claude and compare how well each is parsed and followed.',badges:[]},
+  {id:'p3',title:'Few-shot prompting with examples',desc:'Give 1-2 examples of your ideal output before asking the real question.',practice:"Write a prompt showing 2 example outputs in your exact preferred format. Ask Claude to produce a third. This is the most reliable technique for consistent format and tone control.",badges:[]},
+  {id:'p4',title:'Multiple options with trade-offs',desc:"Get 3 approaches instead of 'the best' then push for a specific recommendation.",practice:"For any open decision, ask for '3 approaches with trade-offs for complexity, performance, and cost.' Follow up: 'Given [your context], which specifically do you recommend and why?'",badges:[]},
+  {id:'p5',title:'Uncertainty flagging',desc:'Ask Claude to explicitly flag confidence level so you know what to verify.',practice:"Add 'Rate your confidence High, Medium, or Low per section' to a technical prompt. See where Claude marks uncertainty. Independently verify those parts.",badges:[]},
+  {id:'p6',title:'Audience and depth specification',desc:'Specifying who reads the output completely changes how Claude calibrates.',practice:"Write the same technical concept for 3 audiences: 'non-technical CEO', 'junior engineer', 'senior SRE'. Study how Claude adjusts terminology, depth, and assumed knowledge.",badges:[]},
+  {id:'p7',title:'Build your first 5 reusable prompt templates',desc:'Parameterized templates are the foundation of consistent quality at scale.',practice:'Identify your top 5 Claude use cases this week. For each write a template with [PLACEHOLDER] values. Test each, refine until ideal, then save them somewhere accessible.',badges:[]},
+]},
+{phase:3,color:'phi',ac:'#7c6ef5',name:'Applied Usage — Product and Tech',level:'Intermediate',items:[
+  {id:'a1',title:'Write a complete PRD with Claude',desc:'Use Claude as co-author to produce a production-quality PRD end-to-end.',practice:"Take a real feature you are working on. Use the PRD template from the Prompt Library. Iterate at least 3 times — first draft, then 'add more specific edge cases', then 'tighten success metrics with actual numbers.' Compare with your normal PRD process.",badges:[]},
+  {id:'a2',title:'Design a backend API flow with failure modes',desc:'Have Claude design a complete API flow including unhappy paths and idempotency.',practice:"Pick a real API you are building. Use the API Flow Design template. Add: 'Now add what happens when step 3 fails, step 5 times out, and the same request is sent twice.' Rate completeness vs your real design.",badges:[]},
+  {id:'a3',title:'Root cause analysis on a real incident',desc:'Apply structured debugging on a real or past production issue.',practice:"Take a real bug or outage from your work history. Use the RCA template. See if Claude identifies the same root cause. See if it catches anything you missed. Note the gaps.",badges:[]},
+  {id:'a4',title:'Stakeholder communication drafting',desc:'Use Claude to draft difficult emails and messages for any audience.',practice:"Write an email you have been procrastinating on. Use the Stakeholder Email template. Request 2 versions: direct and diplomatic. Notice what Claude improves on tone, structure, and framing.",badges:[]},
+  {id:'a5',title:'Technical trade-off analysis with recommendation',desc:'Get structured comparison of architectural options and a concrete recommendation.',practice:"Pick a real architectural decision currently open in your team. Use the Trade-off Analysis template. Push for a specific recommendation. Then ask: 'What are you most uncertain about in this recommendation?'",badges:[]},
+  {id:'a6',title:'Challenge your own design assumptions',desc:'Present any plan and ask Claude to find weaknesses and risks.',practice:"Take your most recent technical design. Send it and ask: 'Play skeptical senior engineer. What are the 5 biggest weaknesses? What fails first at 10x scale?' Use this as pre-review practice.",badges:[]},
+  {id:'a7',title:'High-load stress testing simulation',desc:'Ask Claude to walk through what breaks when you scale dramatically.',practice:"Describe your most critical backend service. Ask: 'Walk through what breaks as we go from current load to 10x to 100x. At each level what fails first and why?' Use this to build your scaling roadmap.",badges:[]},
+]},
+{phase:4,color:'pha',ac:'#e8b84b',name:'Advanced Workflows',level:'Intermediate to Advanced',items:[
+  {id:'w1',title:'Multi-step reasoning chains',desc:'Break complex problems into a sequence where each Claude output feeds the next.',practice:"Take a complex analysis task like designing a fraud detection system. Break it into steps: (1) list risk signals, (2) detection methods per signal, (3) scoring model, (4) decision flow. Run each step using previous output as input context.",badges:[]},
+  {id:'w2',title:'Full document review and synthesis',desc:'Feed Claude complete documents and extract structured, actionable insights.',practice:"Take a real document — architecture spec, product brief, research paper. Paste it in full and ask: summarize key decisions, identify gaps, list open questions, flag inconsistencies. Compare with how long manual review would take.",badges:[{l:'200K Context',c:'nf'}]},
+  {id:'w3',title:'Set up Claude Projects with persistent context',desc:'Create a project that serves as your always-on AI collaborator.',practice:"Create a new Project in claude.ai. Write a system prompt with your role, company context, tech stack, and output format preferences. Upload 1-2 key reference documents. Test with 3 different query types. Refine until consistently ideal.",badges:[{l:'New Feature',c:'nf'}]},
+  {id:'w4',title:'First Claude API call and automation',desc:'Make a programmatic API call and build a simple automation workflow.',practice:"Use the Anthropic API quickstart. Write a Python or Node.js script that takes a text input, sends it to Claude with a structured system prompt, and parses the structured response. Even a simple format-this-data-as-JSON workflow counts.",badges:[]},
+  {id:'w5',title:'Claude plus web search for current research',desc:"Use Claude's search capability to combine reasoning with real-time information.",practice:"Pick a recent regulatory change or competitor move in your domain. Ask Claude with search enabled to: find what changed, explain implications for your product, suggest 3 action items. Compare quality vs a plain Google search.",badges:[{l:'New Feature',c:'nf'}]},
+  {id:'w6',title:'Build a reusable decision framework',desc:'Create a structured template you can apply across similar decisions repeatedly.',practice:"Choose a decision type you make repeatedly — build vs buy, SQL vs NoSQL, monolith vs microservices. Work with Claude to design a 5-question scoring framework. Apply it to 3 past decisions. Refine until it matches your actual judgment.",badges:[]},
+  {id:'w7',title:'Maintain and version your prompt playbook',desc:'Document, version, and systematically improve your best prompts.',practice:"Create a file or Notion page called Claude Playbook. Add your 10 best prompts this month. For each note: use case, template, version number, what improved from v1. Review and update monthly.",badges:[]},
+]},
+{phase:5,color:'phe',ac:'#ff6b6b',name:'Expert-Level Mastery',level:'Advanced to Expert',items:[
+  {id:'e1',title:'Full product spec co-authored with Claude',desc:'Use Claude iteratively across sessions to produce a production-quality spec from scratch.',practice:"Take a real upcoming feature. Use Claude across 5+ iterations: initial draft, user stories, technical requirements, edge cases, executive summary. Have a real engineer review the final spec. Rate its quality vs your normal process.",badges:[]},
+  {id:'e2',title:'Multi-step agentic workflow design',desc:'Design and run a complete workflow where Claude handles distinct sub-tasks in sequence.',practice:"Design a workflow: raw customer feedback as input, outputs: categorized themes, priority-ranked issues, product backlog in your ticket format. Run it end-to-end. Measure time vs your manual process.",badges:[]},
+  {id:'e3',title:'Prompt evaluation and A/B testing',desc:'Systematically test prompt variations and measure output quality differences.',practice:"Take your most important recurring prompt. Create 3 versions: direct, XML-tagged, few-shot. Run each on the same 5 test inputs. Score on: accuracy, format quality, depth. Pick the winner and document why it won.",badges:[{l:'Extended Thinking',c:'nf'}]},
+  {id:'e4',title:"Map Claude's failure modes in your domain",desc:'Document where Claude consistently underperforms for your specific type of work.',practice:"Over 2 weeks keep a failure log: every wrong, vague, or misleading response — note the prompt, failure type, and correct answer. After 10 entries identify patterns. Build a domain-specific verification checklist.",badges:[]},
+  {id:'e5',title:'Claude Code for repository-level tasks',desc:'Use Claude Code CLI for multi-file operations and full codebase analysis.',practice:"Install Claude Code with npm install -g @anthropic-ai/claude-code. Give it a real task in your codebase: find all external HTTP calls without a timeout and add 5-second timeouts. Review each change. Compare with manual implementation speed and quality.",badges:[{l:'Claude Code',c:'nf'}]},
+  {id:'e6',title:'Connect Claude via MCP to external tools',desc:'Integrate Claude with Google Drive, Slack, or a custom API using the MCP protocol.',practice:"Connect one MCP tool — start with Google Drive or Gmail. Ask Claude a cross-source question that would normally require manual searching: find all emails and documents related to [project] from last month and summarize the current status. Measure time saved.",badges:[{l:'MCP',c:'nf'}]},
+  {id:'e7',title:'Document and teach your Claude system',desc:'The final mastery test: write a guide that onboards someone else into your complete workflow.',practice:"Write a one-page Claude Playbook for Your Role document. Include: your 5 most-used templates, 3 domain-specific anti-patterns, Projects setup instructions, and 3 workflows that save you the most time. Share with a colleague and get feedback.",badges:[]},
+]},
+];
+
+/* ════ STORAGE — works on file://, http://, and everywhere ════ */
+const SK='cmhub_v3';
+const _mem={};  /* in-memory fallback when localStorage is blocked */
+function loadSt(){
+  try{const v=localStorage.getItem(SK);return v?JSON.parse(v):{};}
+  catch(e){return _mem[SK]?JSON.parse(_mem[SK])||{}:{};}
+}
+function saveSt(s){
+  try{localStorage.setItem(SK,JSON.stringify(s));}
+  catch(e){_mem[SK]=JSON.stringify(s);}
+}
+
+/* ════ THEME — Light is default ════ */
+function toggleTheme(){
+  const h=document.documentElement,isL=h.getAttribute('data-theme')==='light';
+  h.setAttribute('data-theme',isL?'dark':'light');
+  document.getElementById('thi').textContent=isL?'☀️':'🌙';
+  document.getElementById('thl').textContent=isL?'Light':'Dark';
+  try{localStorage.setItem('cmhub_theme',isL?'dark':'light');}catch(e){_mem['theme']=isL?'dark':'light';}
+}
+(function(){
+  try{
+    const t=(function(){try{return localStorage.getItem('cmhub_theme');}catch(e){return _mem['theme']||null;}}());
+    if(t==='dark'){
+      document.documentElement.setAttribute('data-theme','dark');
+      var ti=document.getElementById('thi');var tl=document.getElementById('thl');
+      if(ti)ti.textContent='☀️';if(tl)tl.textContent='Light';
+    }
+  }catch(e){}
+})();
+
+/* ════ DRAWER ════ */
+function openDrawer(){
+  document.getElementById('dwr').classList.add('open');
+  document.getElementById('dov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDrawer(){
+  document.getElementById('dwr').classList.remove('open');
+  document.getElementById('dov').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+/* ════ NAV ════ */
+function nav(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nv,.sbk').forEach(b=>b.classList.remove('active'));
+  document.getElementById('s-'+id).classList.add('active');
+  document.querySelectorAll('.nv,.sbk').forEach(b=>{
+    const oc=b.getAttribute('onclick')||'';
+    if(oc.includes("'"+id+"'"))b.classList.add('active');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ════ MUST TRY ════ */
+function renderMustTry(){
+  const c=document.getElementById('mt-container');
+  if(!c)return;
+  c.innerHTML=MUST_TRY.map(m=>`
+    <div class="mtcard">
+      <div class="mth"><div class="mtt">${m.icon} ${m.title}</div><span class="mtb">${m.badge}</span></div>
+      <div class="mtp">${m.prompt.replace(/\n/g,'<br>')}</div>
+      <div class="mtw">💡 ${m.why}</div>
+      <div class="mtbtn">
+        <button class="pcbtn" onclick="cpTxt(this,'${esc(m.prompt)}')">Copy Prompt</button>
+        <button class="pcbtn" onclick="nav('prompts')">Browse All →</button>
+      </div>
+    </div>`).join('');
+}
+
+/* ════ DASH UPDATES ════ */
+function renderDashUpdates(){
+  const c=document.getElementById('dash-updates');
+  if(!c)return;
+  const cm={hot:'uhot',feature:'ufeat',new:'unew',tip:''};
+  const bm={hot:'bhot',feature:'bfeat',new:'bnew',tip:'btip'};
+  c.innerHTML=UPDATES.slice(0,5).map(u=>`
+    <div class="ual ${cm[u.badge]||''}" onclick="nav('updates')">
+      <span class="ubg ${bm[u.badge]||'bfeat'}">${u.bt}</span>
+      <div class="uac"><div class="uat">${u.title}</div><div class="uad">${u.summary}</div></div>
+      <span class="uar">→</span>
+    </div>`).join('');
+}
+
+/* ════ PROMPT LIBRARY ════ */
+const CATS=['All',...[...new Set(PROMPTS.map(p=>p.cat))]];
+let activeCat='All';
+
+function renderFilters(){
+  const c=document.getElementById('pfilts');
+  if(!c)return;
+  c.innerHTML=CATS.map(cat=>`<button class="pfb ${cat===activeCat?'on':''}" onclick="setCat('${cat}')">${cat}</button>`).join('');
+}
+
+function setCat(cat){
+  activeCat=cat;
+  renderFilters();
+  filterP(document.getElementById('psearch')?.value||'');
+}
+
+function filterP(q){
+  const c=document.getElementById('pgrid');
+  if(!c)return;
+  const list=PROMPTS.filter(p=>{
+    const mc=activeCat==='All'||p.cat===activeCat;
+    const mq=!q||p.title.toLowerCase().includes(q.toLowerCase())||p.prompt.toLowerCase().includes(q.toLowerCase())||p.cat.toLowerCase().includes(q.toLowerCase());
+    return mc&&mq;
+  });
+  if(!list.length){c.innerHTML='<div style="color:var(--t3);font-size:13px;padding:16px 0;">No prompts match your search.</div>';return;}
+  c.innerHTML=list.map(p=>`
+    <div class="pc">
+      <div class="pch">
+        <div class="pct">${p.icon} ${p.title}${p.isNew?'<span class="ntag">New</span>':''}</div>
+        <span class="pcc">${p.cat}</span>
+      </div>
+      <div class="pcb">
+        <div class="pcp" id="pp-${p.id}">${fmtP(p.prompt)}</div>
+        <div class="pca">
+          <button class="pcbtn" onclick="xpP('pp-${p.id}',this)">Expand</button>
+          <button class="pcbtn" onclick="cpTxt(this,'${esc(p.prompt)}')">Copy</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function fmtP(t){return t.replace(/\[([^\]]+)\]/g,'<span class="pph">[$1]</span>').replace(/\n/g,'<br>');}
+function xpP(id,btn){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.classList.toggle('xp');
+  btn.textContent=el.classList.contains('xp')?'Collapse':'Expand';
+}
+
+/* ════ UPDATES FULL ════ */
+function renderUpdates(){
+  const c=document.getElementById('uc-container');
+  if(!c)return;
+  const dc={hot:'var(--coral)',feature:'var(--ac)',new:'var(--teal)',tip:'var(--gold)'};
+  const bm={hot:'bhot',feature:'bfeat',new:'bnew',tip:'btip'};
+  c.innerHTML=UPDATES.map(u=>`
+    <div class="ucard">
+      <div class="uch" onclick="togU(this)">
+        <div class="ucdot" style="background:${dc[u.badge]||'var(--ac)'}"></div>
+        <div class="ucm">
+          <div class="ucd">${u.date}</div>
+          <div class="uct">${u.title} <span class="ubg ${bm[u.badge]||'bfeat'}">${u.bt}</span></div>
+          <div class="ucs">${u.summary}</div>
+        </div>
+        <div class="ucch">▼</div>
+      </div>
+      <div class="ucbody" id="ub-${u.id}">
+        ${u.body}
+        <div class="dbox">
+          <div class="dlbl">🧪 Demo Prompt — Try This Right Now</div>
+          <div class="dprompt">${u.demo.replace(/\[([^\]]+)\]/g,'<span class="dph">[$1]</span>').replace(/\n/g,'<br>')}</div>
+          <div style="margin-top:9px;"><button class="pcbtn" onclick="cpTxt(this,'${esc(u.demo)}')">Copy Prompt</button></div>
+        </div>
+        <div class="wbox">
+          <div class="wlbl">Why This Matters for Your Work</div>
+          <div class="wtxt">${u.why}</div>
+        </div>
+        ${u.links.length?`<div class="lrow">${u.links.map(l=>`<a href="${l.u}" target="_blank" class="elink">${l.i} ${l.l}</a>`).join('')}</div>`:''}
+        <div style="margin-top:10px;font-size:12px;color:var(--t3);">📍 Related roadmap milestone → <button style="background:none;border:none;color:var(--ac);cursor:pointer;font-size:12px;font-family:var(--fb);padding:0;" onclick="nav('roadmap')">View in Roadmap</button></div>
+      </div>
+    </div>`).join('');
+}
+
+function togU(h){
+  const b=h.nextElementSibling;
+  const ch=h.querySelector('.ucch');
+  b.classList.toggle('op');
+  ch.classList.toggle('op');
+}
+
+/* ════ ROADMAP ════ */
+function renderRoadmap(){
+  const st=loadSt();
+  const c=document.getElementById('rm-container');
+  if(!c)return;
+  c.innerHTML='';
+  ROADMAP.forEach(phase=>{
+    const done=phase.items.filter(i=>st[i.id]==='done').length;
+    const run=phase.items.filter(i=>st[i.id]==='running').length;
+    const blk=document.createElement('div');
+    blk.className='phblock';
+    blk.innerHTML=`
+      <div class="phhead ${phase.color}" onclick="togPh(this)">
+        <div class="phnum" style="color:${phase.ac}">${String(phase.phase).padStart(2,'0')}</div>
+        <div class="phm">
+          <div class="phlv" style="color:${phase.ac}">${phase.level}</div>
+          <div class="phname">${phase.name}</div>
+        </div>
+        <div class="phct" id="phct-${phase.phase}">${done}/${phase.items.length} done${run>0?' · '+run+' doing':''}</div>
+        <div class="phch op">▼</div>
+      </div>
+      <div class="ritems" id="pi-${phase.phase}"></div>`;
+    c.appendChild(blk);
+    const itemsEl=document.getElementById('pi-'+phase.phase);
+    phase.items.forEach(item=>{
+      const s=st[item.id]||'pending';
+      const el=document.createElement('div');
+      el.className='ri '+(s==='done'?'sd':s==='running'?'sr':'');
+      el.id='ri-'+item.id;
+      const badges=item.badges.map(b=>`<span class="rb ${b.c||''}">${b.l}</span>`).join('');
+      el.innerHTML=`
+        <div class="rind"></div>
+        <div class="rcon">
+          ${badges?`<div class="rbadges">${badges}</div>`:''}
+          <div class="rtitle">${item.title}</div>
+          <div class="rdesc">${item.desc}</div>
+          <div class="rprac"><strong style="color:var(--ac)">How to practice:</strong> ${item.practice}</div>
+          <button class="rpbtn" onclick="togPrac('ri-${item.id}',this)">▶ Show practice guide</button>
+        </div>
+        <div class="stg">
+          <button class="stb ${s==='done'?'ad':''}" onclick="setSt('${item.id}','done',event)" title="Mark done">✓</button>
+          <button class="stb ${s==='running'?'ar':''}" onclick="setSt('${item.id}','running',event)" title="Mark in progress">▶</button>
+          <button class="stb ${s==='pending'?'ap':''}" onclick="setSt('${item.id}','pending',event)" title="Mark pending">◦</button>
+        </div>`;
+      itemsEl.appendChild(el);
     });
+  });
+  updateProgress(st);
+}
 
-    document.querySelectorAll('.sidebar-link').forEach(s => {
-      if (s.getAttribute('onclick') && s.getAttribute('onclick').includes(id)) {
-        s.classList.add('active');
-      }
+function togPh(h){
+  const items=h.nextElementSibling;
+  const ch=h.querySelector('.phch');
+  const open=ch.classList.contains('op');
+  items.style.display=open?'none':'flex';
+  ch.classList.toggle('op',!open);
+}
+
+function togPrac(id,btn){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.classList.toggle('xp');
+  btn.textContent=el.classList.contains('xp')?'▼ Hide practice guide':'▶ Show practice guide';
+}
+
+function setSt(id,ns,e){
+  if(e)e.stopPropagation();
+  const st=loadSt();
+  st[id]=ns;
+  saveSt(st);
+  const el=document.getElementById('ri-'+id);
+  if(!el)return;
+  el.className='ri '+(ns==='done'?'sd':ns==='running'?'sr':'');
+  el.querySelectorAll('.stb').forEach(b=>{
+    b.className='stb';
+    const t=b.textContent.trim();
+    if(t==='✓'&&ns==='done')b.classList.add('ad');
+    if(t==='▶'&&ns==='running')b.classList.add('ar');
+    if(t==='◦'&&ns==='pending')b.classList.add('ap');
+  });
+  updateProgress(st);
+}
+
+function updateProgress(st){
+  let done=0,run=0,pen=0,tot=0;
+  ROADMAP.forEach(p=>p.items.forEach(i=>{
+    tot++;
+    const s=st[i.id]||'pending';
+    if(s==='done')done++;else if(s==='running')run++;else pen++;
+  }));
+  const pct=Math.round((done/tot)*100);
+  const labels=[[0,'Just getting started'],[10,'Learning the basics'],[25,'Building momentum'],[40,'Getting comfortable'],[55,'Solid intermediate user'],[70,'Advanced practitioner'],[85,'Near expert level'],[95,'Almost there!'],[100,'Claude Master 🎯']];
+  let lbl=labels[0][1];for(const[t,l]of labels){if(pct>=t)lbl=l;}
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  const setW=(id,v)=>{const e=document.getElementById(id);if(e)e.style.width=v+'%';};
+  set('d-done',done);set('d-pct',pct+'%');
+  set('rs-done',done);set('rs-run',run);set('rs-pen',pen);
+  set('rm-done',done);set('rm-run',run);set('rm-pen',pen);
+  ['pp-main','pp-rm'].forEach(id=>set(id,pct));
+  ['pl-main','pl-rm'].forEach(id=>set(id,lbl));
+  ['pf-main','pf-rm'].forEach(id=>setW(id,pct));
+  ROADMAP.forEach(phase=>{
+    const pd=phase.items.filter(i=>st[i.id]==='done').length;
+    const pr=phase.items.filter(i=>st[i.id]==='running').length;
+    set('phct-'+phase.phase,`${pd}/${phase.items.length} done${pr>0?' · '+pr+' doing':''}`);
+  });
+}
+
+/* ════ UTILS ════ */
+function cpTxt(btn,txt){
+  const decoded=txt.replace(/\\n/g,'\n').replace(/&#39;/g,"'").replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(decoded).catch(()=>{fallbackCopy(decoded);}).then(()=>{
+      const orig=btn.textContent;btn.textContent='✓ Copied!';btn.classList.add('ok');
+      setTimeout(()=>{btn.textContent=orig;btn.classList.remove('ok');},2000);
     });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    fallbackCopy(decoded);
+    const orig=btn.textContent;btn.textContent='✓ Copied!';btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('ok');},2000);
   }
+}
+function fallbackCopy(text){
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);
+}
+function esc(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"&#39;").replace(/"/g,'&quot;').replace(/\n/g,'\\n').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-  function toggleTemplate(header) {
-    const body = header.nextElementSibling;
-    const chevron = header.querySelector('.template-chevron');
-    body.classList.toggle('open');
-    chevron.classList.toggle('open');
-  }
-
-  function copyPrompt(btn) {
-    const box = btn.closest('.prompt-box');
-    const text = box.innerText.replace('Copy', '').trim();
-    navigator.clipboard.writeText(text).then(() => {
-      btn.textContent = 'Copied!';
-      btn.style.color = 'var(--teal)';
-      btn.style.borderColor = 'rgba(62,207,160,0.4)';
-      setTimeout(() => {
-        btn.textContent = 'Copy';
-        btn.style.color = '';
-        btn.style.borderColor = '';
-      }, 2000);
-    });
-  }
+/* ════ INIT — safe for file:// and http:// ════ */
+document.addEventListener('DOMContentLoaded',function(){
+  try{renderMustTry();}catch(e){console.warn('renderMustTry',e);}
+  try{renderDashUpdates();}catch(e){console.warn('renderDashUpdates',e);}
+  try{renderFilters();}catch(e){console.warn('renderFilters',e);}
+  try{filterP('');}catch(e){console.warn('filterP',e);}
+  try{renderUpdates();}catch(e){console.warn('renderUpdates',e);}
+  try{renderRoadmap();}catch(e){console.warn('renderRoadmap',e);}
+});
 </script>
-
-
-
-</body></html>
+</body>
+</html>
