@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///Users/jigneshpatel/Downloads/claude-mastery-hub.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Mastery Hub — Beginner to Expert</title>
+<link href="./Claude Mastery Hub — Beginner to Expert_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #16161f;
+    --surface: #1c1c28;
+    --surface2: #22222f;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e8f0;
+    --text2: #9898b0;
+    --text3: #5a5a70;
+    --accent: #7c6ef5;
+    --accent2: #5a4de0;
+    --accent-glow: rgba(124,110,245,0.15);
+    --gold: #e8b84b;
+    --gold2: rgba(232,184,75,0.12);
+    --teal: #3ecfa0;
+    --teal2: rgba(62,207,160,0.1);
+    --coral: #ff6b6b;
+    --coral2: rgba(255,107,107,0.1);
+    --blue: #5ba4f5;
+    --blue2: rgba(91,164,245,0.1);
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Mono', monospace;
+    --font-serif: 'Lora', serif;
+    --r: 12px;
+    --r2: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 80px 40px 60px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(124,110,245,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-glow);
+    border: 1px solid rgba(124,110,245,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: #a89df7;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #a89df7 50%, #7c6ef5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--text2);
+    max-width: 560px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar { display: none; }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--text3);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .nav-item:hover { color: var(--text); border-bottom-color: var(--border2); }
+  .nav-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 0;
+    position: relative;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 49px;
+    height: calc(100vh - 49px);
+    overflow-y: auto;
+    padding: 32px 24px;
+    border-right: 1px solid var(--border);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border2) transparent;
+  }
+
+  .sidebar-section {
+    margin-bottom: 28px;
+  }
+
+  .sidebar-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-bottom: 8px;
+    padding-left: 12px;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: var(--r2);
+    font-size: 13px;
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+
+  .sidebar-link:hover {
+    color: var(--text);
+    background: var(--surface);
+    border-color: var(--border);
+  }
+
+  .sidebar-link.active {
+    color: var(--accent);
+    background: var(--accent-glow);
+    border-color: rgba(124,110,245,0.2);
+  }
+
+  .sidebar-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    padding: 40px 48px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-desc {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text2);
+    font-size: 15px;
+  }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--card-accent, var(--accent));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--border2);
+    background: var(--surface2);
+    transform: translateY(-2px);
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 14px;
+    background: var(--icon-bg, var(--accent-glow));
+  }
+
+  .card h3 {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .card-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--border2);
+    color: var(--text3);
+  }
+
+  /* ── TIPS LIST ── */
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .tip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: start;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+
+  .tip:hover {
+    border-color: var(--border2);
+    background: var(--surface2);
+  }
+
+  .tip-num {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text3);
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .tip-content h4 {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .tip-content p {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .tip-content code {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 12px;
+    color: var(--teal);
+    font-family: var(--font-body);
+  }
+
+  /* ── PROMPT TEMPLATES ── */
+  .template-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+  }
+
+  .template-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .template-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border: 1px solid rgba(124,110,245,0.2);
+  }
+
+  .template-body {
+    padding: 16px 20px;
+    display: none;
+  }
+
+  .template-body.open { display: block; }
+
+  .template-chevron {
+    color: var(--text3);
+    transition: transform 0.2s;
+    font-size: 12px;
+  }
+
+  .template-chevron.open { transform: rotate(180deg); }
+
+  .prompt-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text2);
+    font-family: var(--font-body);
+    position: relative;
+  }
+
+  .prompt-box .placeholder {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 11px;
+    color: var(--text3);
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: all 0.15s;
+  }
+
+  .copy-btn:hover {
+    color: var(--text);
+    border-color: var(--border2);
+  }
+
+  /* ── LEVELS ── */
+  .level-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .level-card {
+    border-radius: var(--r);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .level-card.beginner { background: linear-gradient(135deg, #0f1f1a 0%, #0d1a14 100%); --lc: var(--teal); }
+  .level-card.intermediate { background: linear-gradient(135deg, #1a1520 0%, #140f1c 100%); --lc: var(--accent); }
+  .level-card.advanced { background: linear-gradient(135deg, #1f1500 0%, #1a1005 100%); --lc: var(--gold); }
+
+  .level-card::before {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--lc);
+    opacity: 0.05;
+  }
+
+  .level-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--lc);
+    margin-bottom: 10px;
+  }
+
+  .level-card h3 {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .level-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .level-list li {
+    font-size: 13px;
+    color: var(--text2);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .level-list li::before {
+    content: '→';
+    color: var(--lc);
+    flex-shrink: 0;
+    opacity: 0.7;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* ── UPDATES ── */
+  .update-timeline {
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .update-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 8px; bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .update-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .update-item::before {
+    content: '';
+    position: absolute;
+    left: -20px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(124,110,245,0.3);
+  }
+
+  .update-item.new::before {
+    background: var(--teal);
+    box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px rgba(62,207,160,0.3);
+  }
+
+  .update-date {
+    font-size: 11px;
+    color: var(--text3);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .update-title {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .new-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: rgba(62,207,160,0.12);
+    color: var(--teal);
+    border: 1px solid rgba(62,207,160,0.25);
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+
+  .update-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+
+  /* ── LINKS / RESOURCES ── */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .resource-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    text-decoration: none;
+    color: var(--text2);
+    font-size: 13px;
+    transition: all 0.15s;
+  }
+
+  .resource-link:hover {
+    color: var(--text);
+    background: var(--surface2);
+    border-color: var(--border2);
+    transform: translateX(2px);
+  }
+
+  .resource-link-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .resource-link-content h4 {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .resource-link-content p {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .resource-arrow {
+    margin-left: auto;
+    color: var(--text3);
+    font-size: 12px;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+  }
+
+  .resource-link:hover .resource-arrow { transform: translateX(2px); }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight {
+    background: var(--accent-glow);
+    border: 1px solid rgba(124,110,245,0.2);
+    border-radius: var(--r);
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .highlight-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
+  .highlight-text h4 {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 600;
+    color: #c4bbff;
+    margin-bottom: 6px;
+  }
+
+  .highlight-text p {
+    font-size: 13px;
+    color: #9890d0;
+    line-height: 1.6;
+  }
+
+  .warn {
+    background: rgba(232,184,75,0.08);
+    border: 1px solid rgba(232,184,75,0.2);
+  }
+
+  .warn .highlight-text h4 { color: var(--gold); }
+  .warn .highlight-text p { color: #a89060; }
+
+  /* ── TABLE ── */
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    font-size: 13px;
+  }
+
+  .comparison-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--surface);
+    color: var(--text3);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+
+  .comparison-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .comparison-table tr:hover td {
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .comparison-table td:first-child {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .badge-good {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    background: rgba(62,207,160,0.1);
+    color: var(--teal);
+    border: 1px solid rgba(62,207,160,0.2);
+  }
+
+  .badge-warn {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    background: rgba(232,184,75,0.1);
+    color: var(--gold);
+    border: 1px solid rgba(232,184,75,0.2);
+  }
+
+  /* ── PROGRESS TRACK ── */
+  .progress-track {
+    display: flex;
+    gap: 0;
+    margin-bottom: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    overflow: hidden;
+  }
+
+  .progress-step {
+    flex: 1;
+    padding: 16px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+    background: var(--surface);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  .progress-step:last-child { border-right: none; }
+  .progress-step:hover { background: var(--surface2); }
+  .progress-step.done { background: rgba(62,207,160,0.05); }
+  .progress-step.active-step { background: var(--accent-glow); }
+
+  .progress-step-num {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text3);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .progress-step.done .progress-step-num { color: var(--teal); }
+  .progress-step.active-step .progress-step-num { color: var(--accent); }
+
+  .progress-step-label {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 28px 0;
+  }
+
+  h2.sub {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  h2.sub::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 24px 20px; }
+    .level-grid { grid-template-columns: 1fr; }
+    .hero { padding: 48px 20px 36px; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Self-Driven Learning System</div>
+  <h1>Claude Mastery Hub</h1>
+  <p>From first prompt to expert practitioner — a structured system for mastering Claude across product, engineering, and strategy.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Skill Levels</span></div>
+    <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Tips &amp; Tricks</span></div>
+    <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Templates</span></div>
+    <div class="stat"><span class="stat-num">Live</span><span class="stat-label">Updates Tracked</span></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-item active" onclick="showSection(&#39;overview&#39;)"><span class="nav-dot"></span> Overview</a>
+  <a class="nav-item" onclick="showSection(&#39;tips&#39;)"><span class="nav-dot"></span> Tips &amp; Tricks</a>
+  <a class="nav-item" onclick="showSection(&#39;prompts&#39;)"><span class="nav-dot"></span> Prompt Templates</a>
+  <a class="nav-item" onclick="showSection(&#39;levels&#39;)"><span class="nav-dot"></span> Learning Path</a>
+  <a class="nav-item" onclick="showSection(&#39;updates&#39;)"><span class="nav-dot"></span> Updates</a>
+  <a class="nav-item" onclick="showSection(&#39;resources&#39;)"><span class="nav-dot"></span> Docs &amp; Resources</a>
+  <a class="nav-item" onclick="showSection(&#39;antipatterns&#39;)"><span class="nav-dot"></span> Anti-Patterns</a>
+  <a class="nav-item" onclick="showSection(&#39;playbook&#39;)"><span class="nav-dot"></span> Playbook</a>
+</nav>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Getting Started</div>
+      <a class="sidebar-link active" onclick="showSection(&#39;overview&#39;)">
+        <span class="sidebar-icon">🗺</span> Overview
+      </a>
+      <a class="sidebar-link" onclick="showSection(&#39;levels&#39;)">
+        <span class="sidebar-icon">📈</span> Learning Path
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Core Skills</div>
+      <a class="sidebar-link" onclick="showSection(&#39;tips&#39;)">
+        <span class="sidebar-icon">⚡</span> Tips &amp; Tricks
+      </a>
+      <a class="sidebar-link" onclick="showSection(&#39;prompts&#39;)">
+        <span class="sidebar-icon">✍</span> Prompt Templates
+      </a>
+      <a class="sidebar-link" onclick="showSection(&#39;antipatterns&#39;)">
+        <span class="sidebar-icon">⛔</span> Anti-Patterns
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Reference</div>
+      <a class="sidebar-link" onclick="showSection(&#39;updates&#39;)">
+        <span class="sidebar-icon">🔔</span> Latest Updates
+      </a>
+      <a class="sidebar-link" onclick="showSection(&#39;resources&#39;)">
+        <span class="sidebar-icon">📚</span> Docs &amp; Resources
+      </a>
+      <a class="sidebar-link" onclick="showSection(&#39;playbook&#39;)">
+        <span class="sidebar-icon">📓</span> Playbook
+      </a>
+    </div>
+    <div class="sidebar-section" style="margin-top: 40px;">
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 16px;">
+        <div style="font-family: var(--font-head); font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--accent);">Current Model</div>
+        <div style="font-size: 12px; color: var(--text2); line-height: 1.6;">Claude Sonnet 4.6<br><span style="color: var(--text3);">claude-sonnet-4-6</span></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ══ OVERVIEW ══ -->
+    <section id="s-overview" class="section active">
+      <div class="section-header">
+        <div class="section-tag">Start Here</div>
+        <h1 class="section-title">Master Claude Systematically</h1>
+        <p class="section-desc">Not just a Q&amp;A tool — a thinking partner, architect, and co-creator for real-world work.</p>
+      </div>
+
+      <div class="highlight">
+        <span class="highlight-icon">🎯</span>
+        <div class="highlight-text">
+          <h4>Your Goal</h4>
+          <p>Build a deep, practical understanding of Claude to extract consistent, production-quality outputs — across product decisions, backend design, writing, and complex problem-solving.</p>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-step done">
+          <span class="progress-step-num">01</span>
+          <div class="progress-step-label">Foundations</div>
+        </div>
+        <div class="progress-step active-step">
+          <span class="progress-step-num">02</span>
+          <div class="progress-step-label">Intermediate</div>
+        </div>
+        <div class="progress-step">
+          <span class="progress-step-num">03</span>
+          <div class="progress-step-label">Advanced</div>
+        </div>
+        <div class="progress-step">
+          <span class="progress-step-num">04</span>
+          <div class="progress-step-label">Expert</div>
+        </div>
+      </div>
+
+      <h2 class="sub">What Claude Excels At</h2>
+      <div class="card-grid">
+        <div class="card" style="--card-accent: var(--teal); --icon-bg: var(--teal2);">
+          <div class="card-icon">🏗</div>
+          <h3>Technical Architecture</h3>
+          <p>Backend flows, system design, API contracts, database schemas, and edge case reasoning for complex engineering problems.</p>
+          <span class="card-tag">Engineering</span>
+        </div>
+        <div class="card" style="--card-accent: var(--accent); --icon-bg: var(--accent-glow);">
+          <div class="card-icon">📋</div>
+          <h3>Product Thinking</h3>
+          <p>PRDs, user stories, feature trade-offs, UX decisions, and strategic product framing with real-world analogies.</p>
+          <span class="card-tag">Product</span>
+        </div>
+        <div class="card" style="--card-accent: var(--gold); --icon-bg: var(--gold2);">
+          <div class="card-icon">✍</div>
+          <h3>High-Quality Writing</h3>
+          <p>Stakeholder comms, engineering docs, Slack messages, executive summaries — all with the right tone and structure.</p>
+          <span class="card-tag">Communication</span>
+        </div>
+        <div class="card" style="--card-accent: var(--coral); --icon-bg: var(--coral2);">
+          <div class="card-icon">🔍</div>
+          <h3>Debugging &amp; Edge Cases</h3>
+          <p>Root cause analysis, failure mode mapping, race condition identification, and resilience planning.</p>
+          <span class="card-tag">Quality</span>
+        </div>
+        <div class="card" style="--card-accent: var(--blue); --icon-bg: var(--blue2);">
+          <div class="card-icon">📊</div>
+          <h3>Strategy &amp; Analysis</h3>
+          <p>Market positioning, growth loops, competitive analysis, metric trees, and prioritization frameworks.</p>
+          <span class="card-tag">Strategy</span>
+        </div>
+        <div class="card" style="--card-accent: var(--teal); --icon-bg: var(--teal2);">
+          <div class="card-icon">🔄</div>
+          <h3>Workflow Design</h3>
+          <p>Multi-step process automation, decision trees, workflow orchestration with failure handling.</p>
+          <span class="card-tag">Automation</span>
+        </div>
+      </div>
+
+      <h2 class="sub">How Claude Thinks vs. How You Should Prompt</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>How Claude Works</th>
+            <th>Your Prompt Strategy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Context</td>
+            <td>No memory between sessions; reads only what you provide</td>
+            <td>Always front-load role, goal, and constraints</td>
+          </tr>
+          <tr>
+            <td>Depth</td>
+            <td>Calibrates response depth to prompt specificity</td>
+            <td>Specify depth: "step-by-step", "brief", "expert-level"</td>
+          </tr>
+          <tr>
+            <td>Format</td>
+            <td>Defaults to markdown unless told otherwise</td>
+            <td>Request format explicitly: table, bullet, prose, JSON</td>
+          </tr>
+          <tr>
+            <td>Accuracy</td>
+            <td>Confident even when uncertain — can hallucinate</td>
+            <td>Ask it to flag uncertainty; validate critical facts</td>
+          </tr>
+          <tr>
+            <td>Reasoning</td>
+            <td>Better output when asked to think step-by-step</td>
+            <td>Use "think step by step" or chain-of-thought prompts</td>
+          </tr>
+          <tr>
+            <td>Refusal</td>
+            <td>May be cautious on ambiguous or borderline requests</td>
+            <td>Frame intent clearly; provide legitimate context</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ══ TIPS ══ -->
+    <section id="s-tips" class="section">
+      <div class="section-header">
+        <div class="section-tag">Core Techniques</div>
+        <h1 class="section-title">Tips &amp; Tricks</h1>
+        <p class="section-desc">Proven techniques to get consistently better outputs from Claude.</p>
+      </div>
+
+      <h2 class="sub">Prompting Fundamentals</h2>
+      <div class="tips-list">
+        <div class="tip">
+          <div class="tip-num">01</div>
+          <div class="tip-content">
+            <h4>Lead with Role + Context + Goal</h4>
+            <p>Always tell Claude who it should act as, what context applies, and what you need. Example: <code>You are a senior backend engineer at a fintech startup. We're building a payment reconciliation system. Explain the idempotency key pattern.</code></p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">02</div>
+          <div class="tip-content">
+            <h4>Ask for Chain-of-Thought Reasoning</h4>
+            <p>For complex decisions, add <code>Think step by step</code> or <code>Reason through this before answering</code>. This forces Claude to work through logic before concluding, reducing hallucinations and improving quality.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">03</div>
+          <div class="tip-content">
+            <h4>Specify Output Format Explicitly</h4>
+            <p>Claude mirrors your format unless directed. Say: <code>Return as a JSON object</code>, <code>Use a markdown table</code>, <code>Write in bullet points with one-line descriptions</code>, or <code>Write in flowing prose, no bullets</code>.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">04</div>
+          <div class="tip-content">
+            <h4>Use XML Tags for Structured Prompts</h4>
+            <p>For complex prompts with multiple parts, use XML-like tags to separate sections: <code>&lt;context&gt;...&lt;/context&gt;</code>, <code>&lt;task&gt;...&lt;/task&gt;</code>, <code>&lt;constraints&gt;...&lt;/constraints&gt;</code>. Claude handles these very well.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">05</div>
+          <div class="tip-content">
+            <h4>Set Depth and Audience Explicitly</h4>
+            <p>Tell Claude who will read the output: <code>Explain for a non-technical PM</code> or <code>Assume the reader is a senior SRE</code>. Combine with depth: <code>Give a thorough technical breakdown with edge cases</code>.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">06</div>
+          <div class="tip-content">
+            <h4>Use Negative Constraints to Narrow Output</h4>
+            <p>Tell Claude what NOT to do: <code>Don't suggest third-party services</code>, <code>Avoid theoretical explanations — only practical examples</code>, <code>Don't use jargon</code>. This is as powerful as positive instructions.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="sub">Power User Techniques</h2>
+      <div class="tips-list">
+        <div class="tip">
+          <div class="tip-num">07</div>
+          <div class="tip-content">
+            <h4>Iterative Refinement Loops</h4>
+            <p>Treat Claude like a collaborator. First ask for a draft, then: <code>This is good but too generic. Make it more specific to a B2B SaaS context with 10k transactions/day.</code> Each turn builds depth.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">08</div>
+          <div class="tip-content">
+            <h4>Ask Claude to Challenge Your Assumptions</h4>
+            <p>After presenting a design or plan, explicitly ask: <code>What are the weaknesses in this approach? What am I missing?</code> — This surfaces blind spots. Don't just ask for validation.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">09</div>
+          <div class="tip-content">
+            <h4>Request Multiple Options with Trade-offs</h4>
+            <p>Instead of asking for "the best solution", ask: <code>Give me 3 different approaches with trade-offs for each — performance, complexity, and cost</code>. Decision quality improves massively.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">10</div>
+          <div class="tip-content">
+            <h4>Prime with Examples (Few-Shot)</h4>
+            <p>Give 1-2 examples of the output you want before asking for the real one. Claude learns your format, tone, and depth instantly. This is the single most effective way to control output style.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">11</div>
+          <div class="tip-content">
+            <h4>Ask It to Flag Uncertainty</h4>
+            <p>Add: <code>If you're not confident about any part, explicitly say so.</code> Claude will mark uncertain claims with caveats — critical for technical and factual content you'll act on.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">12</div>
+          <div class="tip-content">
+            <h4>Simulate Real-World Scenarios</h4>
+            <p>For backend or product design: <code>Simulate what happens when 10,000 users hit this endpoint simultaneously during a flash sale. Walk through each failure point.</code> — Claude stress-tests designs effectively.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROMPT TEMPLATES ══ -->
+    <section id="s-prompts" class="section">
+      <div class="section-header">
+        <div class="section-tag">Ready-to-Use</div>
+        <h1 class="section-title">Prompt Templates</h1>
+        <p class="section-desc">Copy, adapt, and reuse — a growing library of battle-tested prompts.</p>
+      </div>
+
+      <div id="templates">
+
+        <div class="template-card">
+          <div class="template-header" onclick="toggleTemplate(this)">
+            <div class="template-title">
+              🏗 System Design Review
+              <span class="template-badge">Backend</span>
+            </div>
+            <span class="template-chevron open">▼</span>
+          </div>
+          <div class="template-body open">
+            <div class="prompt-box">
+              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+              You are a senior backend engineer reviewing a system design.<br><br>
+              <span class="placeholder">[Paste your system design here]</span><br><br>
+              Review this design for:<br>
+              1. Single points of failure<br>
+              2. Scalability bottlenecks at 10x current load<br>
+              3. Data consistency issues<br>
+              4. Missing edge cases<br>
+              5. Security considerations<br><br>
+              Format: One section per concern. Rate severity (High / Medium / Low). Suggest fixes.
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-header" onclick="toggleTemplate(this)">
+            <div class="template-title">
+              📋 PRD Writing
+              <span class="template-badge">Product</span>
+            </div>
+            <span class="template-chevron open">▼</span>
+          </div>
+          <div class="template-body open">
+            <div class="prompt-box">
+              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+              Write a concise PRD for the following feature:<br><br>
+              Feature: <span class="placeholder">[Feature name]</span><br>
+              Context: <span class="placeholder">[Product/business context]</span><br>
+              Users: <span class="placeholder">[Who uses this]</span><br><br>
+              Include:<br>
+              - Problem Statement (2-3 sentences)<br>
+              - Success Metrics (3-5 measurable KPIs)<br>
+              - User Stories (3-5, in "As a... I want... So that..." format)<br>
+              - Scope: In / Out of Scope<br>
+              - Edge Cases &amp; Failure Scenarios<br>
+              - Open Questions<br><br>
+              Tone: Engineering-PM friendly. Skip fluff.
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-header" onclick="toggleTemplate(this)">
+            <div class="template-title">
+              🐛 Root Cause Analysis
+              <span class="template-badge">Debugging</span>
+            </div>
+            <span class="template-chevron open">▼</span>
+          </div>
+          <div class="template-body open">
+            <div class="prompt-box">
+              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+              Help me diagnose this production issue.<br><br>
+              Symptoms: <span class="placeholder">[What users/monitors are seeing]</span><br>
+              Error logs: <span class="placeholder">[Paste relevant logs]</span><br>
+              System: <span class="placeholder">[Tech stack and architecture context]</span><br>
+              When it started: <span class="placeholder">[Timeline]</span><br><br>
+              Provide:<br>
+              1. Most likely root causes (ranked by probability)<br>
+              2. How to verify each hypothesis<br>
+              3. Immediate mitigation steps<br>
+              4. Long-term fix recommendations<br><br>
+              Be direct. If you're uncertain, say so explicitly.
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-header" onclick="toggleTemplate(this)">
+            <div class="template-title">
+              📧 Stakeholder Communication
+              <span class="template-badge">Writing</span>
+            </div>
+            <span class="template-chevron open">▼</span>
+          </div>
+          <div class="template-body open">
+            <div class="prompt-box">
+              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+              Write an email to <span class="placeholder">[stakeholder role]</span> about:<br><br>
+              Situation: <span class="placeholder">[What happened or what you need]</span><br>
+              My role: <span class="placeholder">[Your position]</span><br>
+              Their concern: <span class="placeholder">[What they care about most]</span><br>
+              Desired outcome: <span class="placeholder">[What you want from this email]</span><br><br>
+              Tone: Professional but direct. Not too formal. No corporate jargon.<br>
+              Length: Medium — enough to be clear, short enough to be read.<br>
+              Structure: Context → Key point → Action needed.
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-header" onclick="toggleTemplate(this)">
+            <div class="template-title">
+              ⚖️ Technical Trade-off Analysis
+              <span class="template-badge">Architecture</span>
+            </div>
+            <span class="template-chevron open">▼</span>
+          </div>
+          <div class="template-body open">
+            <div class="prompt-box">
+              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+              I'm deciding between these approaches for <span class="placeholder">[problem]</span>:<br><br>
+              Option A: <span class="placeholder">[Approach A]</span><br>
+              Option B: <span class="placeholder">[Approach B]</span><br>
+              Option C (optional): <span class="placeholder">[Approach C]</span><br><br>
+              Context: <span class="placeholder">[Scale, team size, timeline, constraints]</span><br><br>
+              Analyze each option for:<br>
+              - Performance at scale<br>
+              - Implementation complexity<br>
+              - Operational overhead<br>
+              - Cost implications<br>
+              - Risk factors<br><br>
+              End with a clear recommendation and reasoning. Don't hedge — give a definitive answer.
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card">
+          <div class="template-header" onclick="toggleTemplate(this)">
+            <div class="template-title">
+              🔁 API / Flow Design
+              <span class="template-badge">Backend</span>
+            </div>
+            <span class="template-chevron open">▼</span>
+          </div>
+          <div class="template-body open">
+            <div class="prompt-box">
+              <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+              Design the API and backend flow for: <span class="placeholder">[Feature/system name]</span><br><br>
+              Context: <span class="placeholder">[App type, user actions, expected load]</span><br><br>
+              Include:<br>
+              1. Step-by-step flow (happy path first)<br>
+              2. API endpoints: method, URL, request/response schema<br>
+              3. Database operations at each step<br>
+              4. Error cases and how to handle them<br>
+              5. Idempotency considerations<br>
+              6. Rate limiting and security concerns<br><br>
+              Use a numbered list for the flow. Use tables for API contracts.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ LEVELS ══ -->
+    <section id="s-levels" class="section">
+      <div class="section-header">
+        <div class="section-tag">Skill Progression</div>
+        <h1 class="section-title">Learning Path</h1>
+        <p class="section-desc">A structured progression from first-time user to expert practitioner.</p>
+      </div>
+
+      <div class="level-grid">
+        <div class="level-card beginner">
+          <div class="level-label">Level 01 — Foundations</div>
+          <h3>Beginner</h3>
+          <ul class="level-list">
+            <li>Understand how Claude reads and processes prompts</li>
+            <li>Control output length, tone, and format</li>
+            <li>Give clear roles and context in each prompt</li>
+            <li>Ask follow-up questions to refine answers</li>
+            <li>Identify when output quality is low or hallucinated</li>
+          </ul>
+        </div>
+        <div class="level-card intermediate">
+          <div class="level-label">Level 02 — Applied Usage</div>
+          <h3>Intermediate</h3>
+          <ul class="level-list">
+            <li>Use chain-of-thought for complex reasoning tasks</li>
+            <li>Build reusable prompt templates</li>
+            <li>Design multi-step workflows with Claude</li>
+            <li>Debug and validate Claude's outputs critically</li>
+            <li>Use XML tags to structure complex prompts</li>
+            <li>Apply few-shot prompting for consistent style</li>
+          </ul>
+        </div>
+        <div class="level-card advanced">
+          <div class="level-label">Level 03 — Expert</div>
+          <h3>Advanced</h3>
+          <ul class="level-list">
+            <li>Simulate real-world system stress tests</li>
+            <li>Build Claude into multi-step reasoning pipelines</li>
+            <li>Use Claude via API for automated workflows</li>
+            <li>Combine Claude with tools (search, code exec)</li>
+            <li>Maintain a personal prompt playbook</li>
+            <li>Optimize prompts for consistency and accuracy</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="sub">Claude Sonnet vs Opus — When to Use Which</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr><th>Use Case</th><th>Sonnet 4.6</th><th>Opus 4.6</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quick answers &amp; drafts</td>
+            <td><span class="badge-good">Ideal</span></td>
+            <td>Overkill</td>
+          </tr>
+          <tr>
+            <td>Complex system design</td>
+            <td>Good</td>
+            <td><span class="badge-good">Ideal</span></td>
+          </tr>
+          <tr>
+            <td>Long document writing</td>
+            <td><span class="badge-good">Ideal</span></td>
+            <td>Good</td>
+          </tr>
+          <tr>
+            <td>Multi-step reasoning</td>
+            <td>Good</td>
+            <td><span class="badge-good">Ideal</span></td>
+          </tr>
+          <tr>
+            <td>Code generation</td>
+            <td><span class="badge-good">Ideal</span></td>
+            <td>Good</td>
+          </tr>
+          <tr>
+            <td>Cost-sensitive automation</td>
+            <td><span class="badge-good">Ideal</span></td>
+            <td><span class="badge-warn">Expensive</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ══ UPDATES ══ -->
+    <section id="s-updates" class="section">
+      <div class="section-header">
+        <div class="section-tag">Stay Current</div>
+        <h1 class="section-title">Latest Updates</h1>
+        <p class="section-desc">Key Claude improvements and new capabilities — tracked for practitioners.</p>
+      </div>
+
+      <div class="highlight">
+        <span class="highlight-icon">📡</span>
+        <div class="highlight-text">
+          <h4>Track Official Updates</h4>
+          <p>For real-time updates, always check <a href="https://docs.anthropic.com/" style="color: var(--accent);">docs.anthropic.com</a> and the <a href="https://www.anthropic.com/news" style="color: var(--accent);">Anthropic news page</a>. This section captures highlights for practitioners.</p>
+        </div>
+      </div>
+
+      <div class="update-timeline">
+        <div class="update-item new">
+          <div class="update-date">April 2026</div>
+          <div class="update-title">Claude 4.6 Family Released <span class="new-badge">New</span></div>
+          <div class="update-desc">Claude Sonnet 4.6 and Opus 4.6 are the current flagship models. Sonnet 4.6 is the go-to for everyday intelligent tasks — fast, accurate, cost-efficient. Opus 4.6 excels at complex, multi-step reasoning.</div>
+        </div>
+        <div class="update-item new">
+          <div class="update-date">2025–2026</div>
+          <div class="update-title">Extended Context Window <span class="new-badge">Major</span></div>
+          <div class="update-desc">Claude now supports significantly larger context windows, enabling full codebase reviews, long document analysis, and multi-document synthesis without context fragmentation. This changes how you design prompts for long-running workflows.</div>
+        </div>
+        <div class="update-item">
+          <div class="update-date">2025</div>
+          <div class="update-title">Claude Code — Agentic CLI Tool</div>
+          <div class="update-desc">Claude Code is a command-line agentic coding tool that integrates Claude directly into development workflows. Supports MCP (Model Context Protocol) server integration for connecting to external services like GitHub, Jira, Slack.</div>
+        </div>
+        <div class="update-item">
+          <div class="update-date">2025</div>
+          <div class="update-title">Tool Use &amp; MCP Integration</div>
+          <div class="update-desc">Claude can now connect to and use tools via MCP — Google Drive, Gmail, Calendar, Slack, and custom tools. This enables persistent memory-like workflows and real integration with your existing systems.</div>
+        </div>
+        <div class="update-item">
+          <div class="update-date">2025</div>
+          <div class="update-title">Projects Feature (claude.ai)</div>
+          <div class="update-desc">Projects allow you to give Claude persistent context across conversations — upload docs, set system-level instructions, and maintain continuity. This is the closest thing to a "memory" for Claude in the UI.</div>
+        </div>
+        <div class="update-item">
+          <div class="update-date">2025</div>
+          <div class="update-title">Computer Use Capability</div>
+          <div class="update-desc">Claude can now interact with desktop UIs — click, type, navigate applications. Currently in beta/experimental. Key use case: automating file operations, form-filling, and multi-app workflows without APIs.</div>
+        </div>
+        <div class="update-item">
+          <div class="update-date">2024</div>
+          <div class="update-title">Claude Haiku — Fast &amp; Lightweight</div>
+          <div class="update-desc">Haiku models (now Haiku 4.5) are optimized for speed and cost. Best for high-volume, simple tasks: classification, summaries, quick Q&amp;A. Not for complex reasoning or long-form generation.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ RESOURCES ══ -->
+    <section id="s-resources" class="section">
+      <div class="section-header">
+        <div class="section-tag">Official &amp; Curated</div>
+        <h1 class="section-title">Docs &amp; Resources</h1>
+        <p class="section-desc">The best places to learn, reference, and stay current with Claude.</p>
+      </div>
+
+      <h2 class="sub">Official Anthropic Docs</h2>
+      <div class="resource-grid">
+        <a href="https://docs.anthropic.com/" class="resource-link" target="_blank">
+          <span class="resource-link-icon">📘</span>
+          <div class="resource-link-content">
+            <h4>Anthropic Docs</h4>
+            <p>Full API reference &amp; guides</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" class="resource-link" target="_blank">
+          <span class="resource-link-icon">✍</span>
+          <div class="resource-link-content">
+            <h4>Prompt Engineering</h4>
+            <p>Official prompting techniques</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://support.claude.ai/" class="resource-link" target="_blank">
+          <span class="resource-link-icon">💬</span>
+          <div class="resource-link-content">
+            <h4>Support &amp; FAQ</h4>
+            <p>Features, plans, limits</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://www.anthropic.com/news" class="resource-link" target="_blank">
+          <span class="resource-link-icon">📰</span>
+          <div class="resource-link-content">
+            <h4>Anthropic News</h4>
+            <p>New releases &amp; updates</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://docs.anthropic.com/en/api/getting-started" class="resource-link" target="_blank">
+          <span class="resource-link-icon">⚙</span>
+          <div class="resource-link-content">
+            <h4>API Reference</h4>
+            <p>Endpoints, models, schemas</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://console.anthropic.com/" class="resource-link" target="_blank">
+          <span class="resource-link-icon">🖥</span>
+          <div class="resource-link-content">
+            <h4>Anthropic Console</h4>
+            <p>API access &amp; playground</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+      </div>
+
+      <hr class="divider">
+
+      <h2 class="sub">Prompt Engineering Deep Dives</h2>
+      <div class="resource-grid">
+        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought" class="resource-link" target="_blank">
+          <span class="resource-link-icon">🔗</span>
+          <div class="resource-link-content">
+            <h4>Chain-of-Thought</h4>
+            <p>Step-by-step reasoning guide</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags" class="resource-link" target="_blank">
+          <span class="resource-link-icon">🏷</span>
+          <div class="resource-link-content">
+            <h4>XML Tags</h4>
+            <p>Structure complex prompts</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/multishot-prompting" class="resource-link" target="_blank">
+          <span class="resource-link-icon">🎯</span>
+          <div class="resource-link-content">
+            <h4>Few-Shot (Multishot)</h4>
+            <p>Examples to shape output</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+        <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/system-prompts" class="resource-link" target="_blank">
+          <span class="resource-link-icon">⚡</span>
+          <div class="resource-link-content">
+            <h4>System Prompts</h4>
+            <p>Set persistent behavior</p>
+          </div>
+          <span class="resource-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══ ANTI-PATTERNS ══ -->
+    <section id="s-antipatterns" class="section">
+      <div class="section-header">
+        <div class="section-tag">Common Mistakes</div>
+        <h1 class="section-title">Anti-Patterns to Avoid</h1>
+        <p class="section-desc">The habits that consistently produce weak, unreliable outputs.</p>
+      </div>
+
+      <div class="highlight warn">
+        <span class="highlight-icon">⚠</span>
+        <div class="highlight-text">
+          <h4>Why Anti-Patterns Matter</h4>
+          <p>Most users plateau at 60-70% output quality because of a small set of repeatable mistakes. Eliminating these doubles your output quality with zero extra effort.</p>
+        </div>
+      </div>
+
+      <div class="tips-list">
+        <div class="tip">
+          <div class="tip-num" style="color: var(--coral);">✗</div>
+          <div class="tip-content">
+            <h4>Vague, Open-Ended Prompts</h4>
+            <p>"Tell me about payments" → Claude gives you a Wikipedia-level overview. Always specify: what aspect, what depth, what format, for what purpose. Vague prompts get generic answers.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num" style="color: var(--coral);">✗</div>
+          <div class="tip-content">
+            <h4>Trusting Without Verification</h4>
+            <p>Claude is confident even when wrong. Never ship code, data, or decisions based solely on Claude's output for critical use cases. Always validate technical facts, especially around APIs, regulations, and numbers.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num" style="color: var(--coral);">✗</div>
+          <div class="tip-content">
+            <h4>Treating Each Session as Isolated</h4>
+            <p>Claude has no memory between chats. Jumping into a new session without context means starting from zero. Always re-establish role, context, and constraints — or use Projects to persist context across sessions.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num" style="color: var(--coral);">✗</div>
+          <div class="tip-content">
+            <h4>One-and-Done Prompting</h4>
+            <p>Accepting the first response as final. Real value comes from iteration: push back, ask for alternatives, challenge assumptions, and request deeper reasoning. First responses are drafts.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num" style="color: var(--coral);">✗</div>
+          <div class="tip-content">
+            <h4>Overloading One Prompt</h4>
+            <p>Stuffing 5 different questions into one message. Claude tries to address all of them superficially. Break complex requests into logical steps. One clear goal per interaction unit.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num" style="color: var(--coral);">✗</div>
+          <div class="tip-content">
+            <h4>Not Asking for Edge Cases</h4>
+            <p>Claude will give you the happy path unless explicitly asked for failure modes. For any design or plan, always add: <code>What could go wrong? What edge cases am I missing?</code></p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num" style="color: var(--coral);">✗</div>
+          <div class="tip-content">
+            <h4>Accepting "It Depends" Without Drilling Down</h4>
+            <p>When Claude says "it depends on your use case," don't stop there. Push: <code>Given my context is X and Y, which approach would you recommend and why?</code> Force a concrete recommendation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PLAYBOOK ══ -->
+    <section id="s-playbook" class="section">
+      <div class="section-header">
+        <div class="section-tag">Personal System</div>
+        <h1 class="section-title">Your Claude Playbook</h1>
+        <p class="section-desc">Build and maintain this as a living document. Review and update as you learn.</p>
+      </div>
+
+      <h2 class="sub">Playbook Structure</h2>
+      <div class="card-grid">
+        <div class="card" style="--card-accent: var(--teal); --icon-bg: var(--teal2);">
+          <div class="card-icon">📁</div>
+          <h3>Prompt Library</h3>
+          <p>Save your best prompts by domain — backend, product, writing. Tag by type: system design, debugging, PRD, etc. Each should be parameterized with placeholders.</p>
+          <span class="card-tag">Templates</span>
+        </div>
+        <div class="card" style="--card-accent: var(--accent); --icon-bg: var(--accent-glow);">
+          <div class="card-icon">🧠</div>
+          <h3>Decision Log</h3>
+          <p>Track decisions Claude helped you make. Include: the prompt, the output, what you changed, and outcome. Learn from the delta between Claude's answer and reality.</p>
+          <span class="card-tag">Learning</span>
+        </div>
+        <div class="card" style="--card-accent: var(--gold); --icon-bg: var(--gold2);">
+          <div class="card-icon">⚡</div>
+          <h3>Quick Patterns</h3>
+          <p>Short, reusable patterns you use constantly: <code>Think step by step</code>, <code>Flag uncertainty</code>, <code>Give 3 options with trade-offs</code>. Keep these front of mind.</p>
+          <span class="card-tag">Patterns</span>
+        </div>
+        <div class="card" style="--card-accent: var(--coral); --icon-bg: var(--coral2);">
+          <div class="card-icon">🚫</div>
+          <h3>Known Limitations</h3>
+          <p>Track where Claude consistently fails or hallucinate for your domain. Build verification checklists for those areas. Know when NOT to trust Claude.</p>
+          <span class="card-tag">Reliability</span>
+        </div>
+      </div>
+
+      <h2 class="sub">Guiding Principles</h2>
+      <div class="tips-list">
+        <div class="tip">
+          <div class="tip-num">P1</div>
+          <div class="tip-content">
+            <h4>Claude is a Thinking Partner, Not an Oracle</h4>
+            <p>Use Claude to expand your thinking, explore options, and stress-test ideas — not to get definitive answers you'll act on blindly. The best outputs come from real collaboration.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">P2</div>
+          <div class="tip-content">
+            <h4>Clarity Over Complexity</h4>
+            <p>Simple, clear prompts beat elaborate, clever prompts. If your prompt is confusing, Claude's answer will be too. Write prompts the way you'd brief a smart colleague.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">P3</div>
+          <div class="tip-content">
+            <h4>Always Validate Critical Outputs</h4>
+            <p>For anything that goes into production, a proposal, or a decision — independently verify. Claude's confidence does not correlate with correctness for edge cases and recent facts.</p>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-num">P4</div>
+          <div class="tip-content">
+            <h4>Focus on Consistency and Repeatability</h4>
+            <p>The mark of expertise is getting good outputs reliably — not occasionally. Build and refine templates so the quality is consistent across use cases, not prompt-by-prompt luck.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.sidebar-link').forEach(s => s.classList.remove('active'));
+
+    document.getElementById('s-' + id).classList.add('active');
+
+    document.querySelectorAll('.nav-item').forEach(n => {
+      if (n.getAttribute('onclick') && n.getAttribute('onclick').includes(id)) {
+        n.classList.add('active');
+      }
+    });
+
+    document.querySelectorAll('.sidebar-link').forEach(s => {
+      if (s.getAttribute('onclick') && s.getAttribute('onclick').includes(id)) {
+        s.classList.add('active');
+      }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleTemplate(header) {
+    const body = header.nextElementSibling;
+    const chevron = header.querySelector('.template-chevron');
+    body.classList.toggle('open');
+    chevron.classList.toggle('open');
+  }
+
+  function copyPrompt(btn) {
+    const box = btn.closest('.prompt-box');
+    const text = box.innerText.replace('Copy', '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.style.color = 'var(--teal)';
+      btn.style.borderColor = 'rgba(62,207,160,0.4)';
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 2000);
+    });
+  }
+</script>
+
+
+
+</body></html>
